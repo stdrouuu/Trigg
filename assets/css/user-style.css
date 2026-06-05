@@ -1,35 +1,42 @@
 :root {
-  --bg-dark: #0a0a0a;
-  --card-dark: #1a1a1a;
+  --bg-dark: #0d0f12;
+  --card-dark: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.08);
 
   --text-light: #ffffff;
-  --text-secondary: #cccccc;
+  --text-secondary: #a1a1aa;
 
-  --neon-blue: #00e6e0;
-  --blue-link: #3b82f6;
+  --neon-blue: #ffffff;
+  --blue-link: #ffffff;
 
-  --red-alert: #dc2626;
-  --back-btn-text: #fff;
+  --red-alert: #ef4444;
+  --back-btn-text: #ffffff;
+  --blur: blur(20px);
 }
 .light-mode {
-  --bg-dark: #f0f2f5;
-  --card-dark: #ffffff;
+  --bg-dark: #f4f4f5;
+  --card-dark: rgba(0, 0, 0, 0.02);
+  --border: rgba(0, 0, 0, 0.08);
 
-  --text-light: #1f2937;
-  --text-secondary: #6b7280;
+  --text-light: #09090b;
+  --text-secondary: #71717a;
 
-  --neon-blue: #00b8b3;
-  --blue-link: #2563eb;
+  --neon-blue: #000000;
+  --blue-link: #000000;
 
-  --red-alert: #dc2626;
-  --back-btn-text: #333333;
+  --red-alert: #ef4444;
+  --back-btn-text: #09090b;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s;
 }
 body {
   background-color: var(--bg-dark);
@@ -39,91 +46,87 @@ body {
 
 .user-container {
   max-width: 900px;
-  margin: 100px auto 40px;
-  padding: 0 20px;
+  margin: 120px auto 60px;
+  padding: 0 30px;
 }
 
 .card-box {
   background-color: var(--card-dark);
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 20px;
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 24px;
 }
 
 .back-button {
   position: fixed;
-  top: 25px;
-  left: 20px;
+  top: 30px;
+  left: 30px;
   z-index: 900;
-
   display: flex;
   align-items: center;
-  gap: 8px;
-
+  gap: 12px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1rem;
-  color: var(--back-btn-text);
-  padding: 10px 15px;
-  border-radius: 8px;
-
-  background-color: rgba(0, 230, 224, 0.1);
-  border: 1px solid rgba(0, 230, 224, 0.4);
-  border: none;
-
+  color: var(--text-light);
+  padding: 12px 20px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--border);
   transition: all 0.3s ease;
 }
 
-.back-button i {
-  color: var(--neon-blue);
-  font-size: 1.2rem;
-}
-
 .back-button:hover {
-  background-color: rgba(0, 230, 224, 0.3);
-  color: var(--neon-blue);
-  transform: translateX(-3px);
+  background-color: var(--text-light);
+  color: var(--bg-dark);
 }
 
 .account-header {
-  background: linear-gradient(135deg, #4e828b 0%, #1f3b46 100%);
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  position: relative;
-  overflow: hidden;
+  background: var(--card-dark);
+  padding: 40px;
+  border-radius: 24px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .profile-info {
   display: flex;
   align-items: center;
+  gap: 24px;
 }
 
 .avatar {
   background-color: var(--neon-blue);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.5rem;
+  font-weight: 600;
   color: var(--bg-dark);
-  margin-right: 15px;
 }
 
 .user-name {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-light);
+  letter-spacing: -0.5px;
 }
 
 .wallet-section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  padding: 20px 15px;
+  gap: 24px;
+  padding: 10px;
 }
 
 .wallet-item {
@@ -131,76 +134,83 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border-radius: 15px;
+  padding: 24px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  transition: transform 0.3s;
+}
+
+.wallet-item:hover {
+  transform: translateY(-4px);
 }
 
 .wallet-item i {
-  font-size: 2.2rem;
-  margin-bottom: 5px;
-}
-
-.icon-dana {
-  color: var(--blue-link);
-}
-.icon-ovo {
-  color: #8b5cf6;
-}
-.icon-dompetku {
-  color: var(--neon-blue);
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  color: var(--text-light);
 }
 
 .balance {
   font-weight: 600;
-  color: var(--neon-blue);
-  font-size: 1.1rem;
-  margin-top: 5px;
+  color: var(--text-light);
+  font-size: 1.2rem;
+  margin-top: 8px;
 }
 
 .btn-link {
-  background: none;
-  border: 1px solid var(--blue-link);
-  color: var(--blue-link);
-  padding: 5px 10px;
-  border-radius: 5px;
+  background: var(--text-light);
+  border: none;
+  color: var(--bg-dark);
+  padding: 8px 16px;
+  border-radius: 12px;
   cursor: pointer;
   font-size: 0.9rem;
-  margin-top: 8px;
-  transition: background-color 0.3s;
+  font-weight: 500;
+  margin-top: 16px;
+  transition: opacity 0.3s;
 }
 
 .btn-link:hover {
-  background-color: rgba(59, 130, 246, 0.1);
+  opacity: 0.8;
 }
 
 .action-and-info-section {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .activity-section {
-  margin-bottom: 15px;
+  margin-bottom: 24px;
 }
 
 .section-title-row {
   display: flex;
-  justify-content: end;
-  margin-bottom: 15px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
 }
 
 .section-title-row h3 {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 600;
+  color: var(--text-light);
 }
 
 .section-title-row a {
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.section-title-row a:hover {
+  color: var(--text-light);
 }
 
 .activity-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 16px;
 }
 
 .activity-item {
@@ -208,31 +218,48 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 20px 5px;
+  padding: 24px 12px;
   cursor: pointer;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  transition: transform 0.3s;
+}
+
+.activity-item:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .activity-icon {
   font-size: 1.8rem;
-  color: var(--text-secondary);
-  margin-bottom: 5px;
+  color: var(--text-light);
+  margin-bottom: 12px;
 }
 
 .menu-list-item {
   display: flex;
   align-items: center;
-  padding: 15px 5px;
-  border-bottom: 1px solid #3333335d;
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
   text-decoration: none;
   color: var(--text-light);
   transition: background-color 0.3s;
 }
 
+.menu-list-item:last-child {
+  border-bottom: none;
+}
+
+.menu-list-item:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
 .menu-icon {
-  font-size: 1.3rem;
-  color: var(--neon-blue);
-  min-width: 30px;
-  margin-right: 15px;
+  font-size: 1.4rem;
+  color: var(--text-light);
+  min-width: 36px;
+  margin-right: 16px;
 }
 
 .menu-list-item span {
@@ -241,64 +268,40 @@ body {
 }
 
 .arrow-icon {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-secondary);
 }
 
 @media (max-width: 768px) {
   .user-container {
-    margin-top: 80px;
-    padding: 0 15px;
-    max-width: 768px;
+    margin-top: 100px;
+    padding: 0 20px;
   }
   .account-header {
-    padding: 15px;
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
   }
   .profile-info {
     flex-direction: column;
-    text-align: center;
     margin-bottom: 20px;
-  }
-  .avatar {
-    margin: 0 auto 10px;
   }
   .wallet-section {
     grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 15px;
   }
   .wallet-item {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    border: none;
+    padding: 20px;
   }
   .wallet-item i {
-    font-size: 1.5rem;
-    margin-right: 15px;
     margin-bottom: 0;
-  }
-  .wallet-item span:nth-child(2) {
-    flex-grow: 1;
-    text-align: left;
-    font-weight: 500;
-  }
-  .balance {
-    margin-top: 0;
   }
   .activity-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
-  }
-  .activity-item {
-    padding: 15px 5px;
-    font-size: 0.9rem;
   }
   .back-button {
-    top: 15px;
-    left: 15px;
-    padding: 8px 12px;
-    font-size: 0.9rem;
+    top: 20px;
+    left: 20px;
   }
 }

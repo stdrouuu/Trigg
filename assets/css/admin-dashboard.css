@@ -1,0 +1,286 @@
+:root {
+  --primary: #ffffff;
+  --bg-body: #0d0f12;
+  --bg-nav: rgba(13, 15, 18, 0.6);
+  --bg-card: rgba(255, 255, 255, 0.02);
+  --bg-row-hover: rgba(255, 255, 255, 0.04);
+  --text-main: #ffffff;
+  --text-muted: #a1a1aa;
+  --border: rgba(255, 255, 255, 0.06);
+  --blur: blur(24px);
+  --transition-premium: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Plus Jakarta Sans", -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+.admin-navbar {
+  background: var(--bg-nav);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+}
+
+.admin-navbar .logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+}
+
+.admin-navbar .admin-info {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.back-to-site {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: var(--transition-premium);
+}
+
+.back-to-site:hover {
+  color: var(--text-main);
+}
+
+.admin-info span {
+  font-weight: 500;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+
+.btn-logout {
+  background: rgba(239, 68, 68, 0.08);
+  color: #ef4444;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: var(--transition-premium);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.btn-logout:hover {
+  background: #ef4444;
+  color: #fff;
+  border-color: #ef4444;
+  transform: translateY(-1px);
+}
+
+.admin-content {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 30px;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  letter-spacing: -1.2px;
+}
+
+.btn-add {
+  background: var(--primary);
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-premium);
+  margin-bottom: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-add:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.table-container {
+  background: var(--bg-card);
+  border-radius: 28px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  box-shadow: 0 20px 40px -20px rgba(0,0,0,0.3);
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-table th {
+  padding: 24px;
+  text-align: left;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.005);
+}
+
+.product-table td {
+  padding: 24px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  vertical-align: middle;
+}
+
+.product-table tr:hover td {
+  background: var(--bg-row-hover);
+}
+
+.product-table img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.label-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.label-PLAYSTATION { background: rgba(37, 99, 235, 0.15); color: #60a5fa; }
+.label-SWITCH2 { background: rgba(220, 38, 38, 0.15); color: #f87171; }
+.label-OTHER { background: rgba(147, 51, 234, 0.15); color: #c084fc; }
+
+.btn-edit, .btn-delete {
+  padding: 8px 18px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-right: 8px;
+  border: none;
+  transition: var(--transition-premium);
+}
+
+.btn-edit { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid var(--border); }
+.btn-delete { background: rgba(239, 68, 68, 0.08); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.15); }
+
+.btn-edit:hover { background: #fff; color: #000; }
+.btn-delete:hover { background: #ef4444; color: #fff; border-color: #ef4444; }
+
+.modal-content {
+  background: #0f1115;
+  color: #fff;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--border);
+  padding: 24px 30px;
+}
+
+.modal-title { font-weight: 700; font-size: 1.5rem; letter-spacing: -0.5px; }
+
+.modal-body { padding: 30px; }
+
+.modal-body label {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.modal-body input,
+.modal-body select,
+.modal-body textarea {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  color: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  width: 100%;
+  margin-bottom: 24px;
+  transition: var(--transition-premium);
+}
+
+.modal-body input:focus,
+.modal-body select:focus,
+.modal-body textarea:focus {
+  outline: none;
+  border-color: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.04);
+}
+
+.btn-save {
+  background: var(--primary);
+  color: #000;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-premium);
+}
+
+.btn-save:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.btn-cancel {
+  background: transparent;
+  color: #fff;
+  border: 1px solid var(--border);
+  padding: 14px 32px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: var(--transition-premium);
+}
+
+.btn-cancel:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+@media (max-width: 768px) {
+  .product-table th, .product-table td { padding: 16px; }
+  .admin-navbar { padding: 20px; }
+}

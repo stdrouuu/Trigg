@@ -10,9 +10,9 @@
         <div class="account-header">
             <div class="profile-info">
                 <div class="avatar" id="userAvatar">
-                    ?
+                    B
                 </div>
-                <div class="user-name" id="userName">Guest</div>
+                <div class="user-name" id="userName">Brandon</div>
             </div> 
         </div>
 
@@ -66,18 +66,18 @@
                 <span>My Favorites</span>
                 <i class="fas fa-chevron-right arrow-icon"></i>
             </a>
-            <a href="index.php?page=product#cart" class="menu-list-item">
+            <a href="index.php?page=product&open_cart=1" class="menu-list-item">
                 <i class="fas fa-shopping-cart menu-icon"></i>
                 <span>My Cart <span id="cartItemCount" style="color: #00e6e0;"></span></span>
                 <i class="fas fa-chevron-right arrow-icon"></i>
             </a>
-            <a href="#" class="menu-list-item">
-                <i class="fas fa-file-alt menu-icon"></i>
+            <a href="index.php?page=complaint" class="menu-list-item">
+                <i class="fas fa-file-alt menu-icon" style="color: #000000ff;"></i>
                 <span>Submit a Complaint</span>
                 <i class="fas fa-chevron-right arrow-icon"></i>
             </a>
-            <a href="#" class="menu-list-item">
-                <i class="fas fa-headset menu-icon"></i>
+            <a href="index.php?page=faq" class="menu-list-item">
+                <i class="fas fa-headset menu-icon" style="color: #000000ff;"></i>
                 <span>Help & FAQ</span>
                 <i class="fas fa-chevron-right arrow-icon"></i>
             </a>
@@ -92,35 +92,6 @@
 
 <script>
     $(document).ready(function() {
-        // Check if user is logged in and show their name
-        $.ajax({
-            url: 'api/auth.php',
-            type: 'POST',
-            data: { action: 'checkSession' },
-            dataType: 'json',
-            success: function(response) {
-                if (response.loggedIn) {
-                    $('#userName').text(response.userName);
-                    $('#userAvatar').text(response.userName.charAt(0).toUpperCase());
-                } else {
-                    $('#userName').text('Guest');
-                    $('#userAvatar').text('?');
-                }
-            }
-        });
-
-        // Get cart item count
-        $.ajax({
-            url: 'api/cart.php?action=getCount',
-            type: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                if (response.cartCount > 0) {
-                    $('#cartItemCount').text('(' + response.cartCount + ' items)');
-                }
-            }
-        });
-
         // Logout
         $('#logoutBtn').click(function(e) {
             e.preventDefault();
