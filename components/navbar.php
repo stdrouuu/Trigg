@@ -100,7 +100,7 @@
                 <span class="subtotal-amount" id="sidebarSubtotal">Rp 0</span>
             </div>
             <p class="cart-sidebar-note">Shipping & taxes calculated at checkout.</p>
-            <button class="cart-sidebar-checkout-btn" id="checkoutBtn" onclick="doCheckout()">Proceed to Checkout</button>
+            <button class="cart-sidebar-checkout-btn" onclick="alert('Checkout feature coming soon!')">Proceed to Checkout</button>
         </div>
     </div>
 
@@ -270,33 +270,4 @@
                 }
             });
         });
-
-        // Checkout: create order from cart and redirect to orders page
-        function doCheckout() {
-            var $btn = $('#checkoutBtn');
-            $btn.prop('disabled', true).text('Processing...');
-
-            $.ajax({
-                url: 'api/cart.php',
-                type: 'POST',
-                data: { action: 'checkout' },
-                dataType: 'json',
-                success: function(response) {
-                    if (response.success) {
-                        closeCartSidebar();
-                        // Small delay so sidebar closes before redirecting
-                        setTimeout(function() {
-                            window.location.href = 'index.php?page=orders';
-                        }, 300);
-                    } else {
-                        $btn.prop('disabled', false).text('Proceed to Checkout');
-                        alert(response.message || 'Checkout failed. Please try again.');
-                    }
-                },
-                error: function() {
-                    $btn.prop('disabled', false).text('Proceed to Checkout');
-                    alert('Something went wrong. Please try again.');
-                }
-            });
-        }
     </script>

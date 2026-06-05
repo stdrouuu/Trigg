@@ -77,48 +77,5 @@ if ($action == 'getCount') {
     echo json_encode(["cartCount" => intval($count['total'])]);
 }
 
-// Checkout: create order from current cart items
-if ($action == 'checkout') {
-    // Get all cart items for this session
-    $sql = "SELECT cart.qty, products.id as product_id, products.name, products.price, products.image
-            FROM cart
-            JOIN products ON cart.product_id = products.id
-            WHERE cart.session_id = '$session_id'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows == 0) {
-        echo json_encode(["success" => false, "message" => "Cart is empty"]);
-        $conn->close();
-        exit;
-    }
-
-    $items = [];
-    $total = 0;
-    while ($row = $result->fetch_assoc()) {
-        $items[] = $row;
-        $total += $row['price'] * $row['qty'];
-    }
-
-    // Insert into orders table
-    $stmt = $conn->prepare("INSERT INTO orders (session_id, total_price, status) VALUES (?, ?, 'pending')");
-    $stmt->bind_param("si", $session_id, $total);
-    $stmt->execute();
-    $order_id = $stmt->insert_id;
-    $stmt->close();
-
-    // Insert each cart item into order_items
-    $stmt2 = $conn->prepare("INSERT INTO order_items (order_id, product_id, product_name, product_image, qty, price_at_order) VALUES (?, ?, ?, ?, ?, ?)");
-    foreach ($items as $item) {
-        $stmt2->bind_param("iissii", $order_id, $item['product_id'], $item['name'], $item['image'], $item['qty'], $item['price']);
-        $stmt2->execute();
-    }
-    $stmt2->close();
-
-    // Clear the cart after checkout
-    $conn->query("DELETE FROM cart WHERE session_id = '$session_id'");
-
-    echo json_encode(["success" => true, "order_id" => $order_id, "message" => "Order placed successfully"]);
-}
-
 $conn->close();
 ?>

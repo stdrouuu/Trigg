@@ -37,14 +37,6 @@
                         $content = "pages/faq.php";
                         break;
 
-                    case "orders":
-                        $content = "pages/orders.php";
-                        break;
-
-                    case "complaint":
-                        $content = "pages/complaint.php";
-                        break;
-
                     default:
                         $content = "pages/main.php";
                 }
@@ -52,7 +44,7 @@
         ?>
 
         <?php
-        if ($page != 'user' && $page != 'auth' && $page != 'credits' && $page != 'gameview' && $page != 'favorites' && $page != 'faq' && $page != 'orders' && $page != 'complaint') {
+        if ($page != 'user' && $page != 'auth' && $page != 'credits' && $page != 'gameview' && $page != 'favorites' && $page != 'faq') {
             include('components/navbar.php');
         }
         ?>
@@ -64,7 +56,7 @@
         </section>
 
         <?php 
-        if ($page != 'auth' && $page != 'user' && $page != 'gameview' && $page != 'credits' && $page != 'favorites' && $page != 'complaint' && $page != 'faq' && $page != 'orders') {
+        if ($page != 'auth' && $page != 'user' && $page != 'gameview' && $page != 'credits' && $page != 'favorites' && $page != 'complaint' && $page != 'faq') {
             include('components/footer.php');
         }
         ?>

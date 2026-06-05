@@ -45,21 +45,6 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] != true
     <div class="admin-content">
         <h1 class="page-title">Admin Dashboard</h1>
 
-        <!-- Tab Navigation -->
-        <div class="admin-tabs">
-            <button class="admin-tab active" data-tab="products">
-                <i class="fas fa-box"></i> Products
-            </button>
-            <button class="admin-tab" data-tab="orders">
-                <i class="fas fa-receipt"></i> Orders
-                <span class="tab-badge" id="pendingOrdersBadge"></span>
-            </button>
-            <button class="admin-tab" data-tab="complaints">
-                <i class="fas fa-headset"></i> Complaints
-                <span class="tab-badge" id="openComplaintsBadge"></span>
-            </button>
-        </div>
-
         <!-- ═══ TAB: PRODUCTS ═══════════════════════════ -->
         <div class="tab-panel active" id="panel-products">
             <button class="btn-add" id="btnAddProduct">
