@@ -1,332 +1,231 @@
 <link rel="stylesheet" href="./assets/css/user-style.css" />
+<link rel="stylesheet" href="./assets/css/faq-style.css" />
 
-<style>
-    .faq-container {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-    .faq-item {
-        background: var(--card-dark);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        overflow: hidden;
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        backdrop-filter: var(--blur);
-        -webkit-backdrop-filter: var(--blur);
-    }
-    .faq-item:hover {
-        border-color: rgba(255, 255, 255, 0.15);
-        transform: translateY(-2px);
-    }
-    body.light-mode .faq-item:hover {
-        border-color: rgba(0, 0, 0, 0.15);
-    }
-    .faq-question {
-        padding: 24px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
-        user-select: none;
-        font-weight: 600;
-        font-size: 1.05rem;
-        color: var(--text-light);
-        gap: 16px;
-    }
-    .faq-icon-toggle {
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-    .faq-answer {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), padding 0.4s ease;
-        padding: 0 24px;
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-        line-height: 1.6;
-        border-top: 1px solid transparent;
-        text-align: left;
-    }
-    .faq-item.active {
-        border-color: #71717a;
-        box-shadow: 0 0 15px rgba(113, 113, 122, 0.08);
-    }
-    body.light-mode .faq-item.active {
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.03);
-    }
-    .faq-item.active .faq-icon-toggle {
-        transform: rotate(180deg);
-        color: var(--text-light);
-    }
-    .faq-item.active .faq-answer {
-        max-height: 400px;
-        padding: 0 24px 24px;
-        border-top-color: var(--border);
-    }
-    .faq-category-pills {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 24px;
-        flex-wrap: wrap;
-    }
-    .faq-pill {
-        padding: 10px 20px;
-        border-radius: 14px;
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid var(--border);
-        color: var(--text-secondary);
-        font-size: 0.9rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-    .faq-pill:hover, .faq-pill.active {
-        background: rgba(255, 255, 255, 0.08);
-        color: var(--text-light);
-        border-color: #71717a;
-        font-weight: 600;
-    }
-    body.light-mode .faq-pill:hover, body.light-mode .faq-pill.active {
-        background: rgba(0, 0, 0, 0.05);
-    }
-    .faq-search-wrapper {
-        display: flex;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 4px 16px;
-        margin-bottom: 24px;
-        transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    .faq-search-wrapper:focus-within {
-        border-color: #71717a;
-        box-shadow: 0 0 12px rgba(113, 113, 122, 0.15);
-    }
-    body.light-mode .faq-search-wrapper:focus-within {
-        box-shadow: 0 0 12px rgba(0, 0, 0, 0.03);
-    }
-    .faq-search-wrapper input {
-        background: transparent;
-        border: none;
-        width: 100%;
-        padding: 14px 0;
-        color: var(--text-light);
-        font-size: 1.05rem;
-        font-weight: 500;
-        outline: none;
-    }
-    .faq-search-wrapper i {
-        color: var(--text-secondary);
-        margin-right: 12px;
-        font-size: 1.1rem;
-    }
-    .faq-no-results {
-        display: none;
-        padding: 40px;
-        text-align: center;
-        background: var(--card-dark);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        color: var(--text-secondary);
-    }
-    .faq-no-results i {
-        font-size: 2.5rem;
-        margin-bottom: 16px;
-        color: #ef4444;
-    }
-    .faq-header-avatar {
-        background-color: rgba(255, 255, 255, 0.03);
-        color: var(--text-light);
-        border: 1px solid var(--border);
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.02);
-        width: 80px;
-        height: 80px;
-        border-radius: 24px;
-        font-size: 2.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-    }
-    body.light-mode .faq-header-avatar {
-        background-color: rgba(0, 0, 0, 0.02);
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.02);
-    }
-</style>
-
-<a href="index.php?page=user" class="back-button">
-    <i class="fas fa-arrow-left"></i>
-    <span>Back</span>
-</a>
-
-<div class="user-container">
-    <!-- Header banner -->
-    <div class="account-header" style="flex-direction: column; text-align: center; gap: 16px; padding: 48px 24px; margin-bottom: 24px;">
-        <div class="avatar faq-header-avatar">
-            <i class="fa-solid fa-circle-question"></i>
-        </div>
-        <div>
-            <h1 class="user-name" style="font-size: 2.2rem; margin-bottom: 8px;">Help & FAQs</h1>
-            <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0;">Find answers to popular questions and get support instantly.</p>
-        </div>
-    </div>
-
-    <!-- Live Search Bar -->
-    <div class="faq-search-wrapper">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="faqSearchInput" placeholder="Type keywords (e.g. key, payment, DANA, refund)..." autocomplete="off" />
-    </div>
-
-    <!-- Category Pills -->
-    <div class="faq-category-pills">
-        <div class="faq-pill active" data-category="all">All Topics</div>
-        <div class="faq-pill" data-category="keys">Product Keys</div>
-        <div class="faq-pill" data-category="payment">Payments & Wallets</div>
-        <div class="faq-pill" data-category="complaints">Complaints & Support</div>
-        <div class="faq-pill" data-category="delivery">Delivery & Orders</div>
-    </div>
-
-    <!-- FAQ Accordion Container -->
-    <div class="faq-container">
-        <!-- FAQ 1 -->
-        <div class="faq-item" data-category="keys">
-            <div class="faq-question">
-                <span>How do I redeem my purchased game or digital key?</span>
-                <i class="fa-solid fa-chevron-down faq-icon-toggle"></i>
-            </div>
-            <div class="faq-answer">
-                Once your payment is completed, your unique activation key (Steam, PlayStation Store, or Nintendo eShop) is immediately displayed in your transaction history and sent to your email. Simply copy the code and input it into the respective platform's client (e.g., Steam Client -> Add Game -> Activate a Product on Steam).
-            </div>
+<!-- Hero Section Full Width -->
+<div class="faq-hero-full-width">
+    <div class="faq-hero-content">
+        <h1 class="faq-hero-title">Kumpulan <span style="color: #BDB2FF;">Pertanyaan</span> <br> yang Sering Diajukan</h1>
+        <!-- Search Input -->
+        <div class="faq-search-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="faqSearchInput" placeholder="Cari pertanyaan..." autocomplete="off" />
         </div>
 
-        <!-- FAQ 2 -->
-        <div class="faq-item" data-category="payment">
-            <div class="faq-question">
-                <span>What payment methods are supported on GamInc?</span>
-                <i class="fa-solid fa-chevron-down faq-icon-toggle"></i>
-            </div>
-            <div class="faq-answer">
-                We support a variety of instant digital payment solutions, including linked e-wallets such as **DANA** and **OVO** for fast, one-click checkout. You can also pay via credit card, Bank Transfer, and secure QRIS scans.
-            </div>
-        </div>
-
-        <!-- FAQ 3 -->
-        <div class="faq-item" data-category="payment">
-            <div class="faq-question">
-                <span>My wallet balance hasn't updated after linking. What should I do?</span>
-                <i class="fa-solid fa-chevron-down faq-icon-toggle"></i>
-            </div>
-            <div class="faq-answer">
-                Linking your e-wallet (DANA/OVO) securely fetches your real-time balance. If the balance doesn't display immediately, try disconnecting the wallet via your account screen and reconnecting it. If the issue persists, please submit a complaint ticket under the "Top-up & Wallet" category.
-            </div>
-        </div>
-
-        <!-- FAQ 4 -->
-        <div class="faq-item" data-category="delivery">
-            <div class="faq-question">
-                <span>How long does it take for digital console purchases to deliver?</span>
-                <i class="fa-solid fa-chevron-down faq-icon-toggle"></i>
-            </div>
-            <div class="faq-answer">
-                All game titles, keys, and top-up gift cards are delivered **instantly** (within 2-5 seconds) after payment confirmation. Hard-copy physical accessories or limited retro consoles are shipped via express courier and usually take 1-3 business days depending on your location.
-            </div>
-        </div>
-
-        <!-- FAQ 5 -->
-        <div class="faq-item" data-category="complaints">
-            <div class="faq-question">
-                <span>How can I file a formal complaint or resolve a transaction issue?</span>
-                <i class="fa-solid fa-chevron-down faq-icon-toggle"></i>
-            </div>
-            <div class="faq-answer">
-                You can easily file a formal support request by navigating to the **Submit a Complaint** page under your profile. Select the appropriate category (e.g. Account, Payments, Product Keys), detail your issue, and click Submit. Your ticket is registered in our session support log and is typically reviewed by our staff within 24 hours.
-            </div>
-        </div>
-
-        <!-- FAQ 6 -->
-        <div class="faq-item" data-category="keys">
-            <div class="faq-question">
-                <span>Can I request a refund for a digital game key?</span>
-                <i class="fa-solid fa-chevron-down faq-icon-toggle"></i>
-            </div>
-            <div class="faq-answer">
-                Due to the nature of digital license keys, all key sales are final once the key has been revealed to you. However, if a key is invalid or defective, we will issue a full replacement or refund. Please submit a complaint ticket with your Transaction ID and a screenshot of the error.
-            </div>
-        </div>
-    </div>
-
-    <!-- No Results Placeholder -->
-    <div class="faq-no-results" id="faqNoResults">
-        <i class="fa-solid fa-circle-exclamation"></i>
-        <h3>No Answers Found</h3>
-        <p>We couldn't find any questions matching your keywords. Please try another term or submit a ticket to us directly.</p>
-    </div>
+</div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        // Toggle Accordion Panels
-        $('.faq-question').click(function() {
-            var faqItem = $(this).closest('.faq-item');
-            var isActive = faqItem.hasClass('active');
-            
-            // Toggle active state
-            if (isActive) {
-                faqItem.removeClass('active');
-            } else {
-                $('.faq-item').removeClass('active'); // Close other accordion items
-                faqItem.addClass('active');
-            }
-        });
+<!-- Gradient Divider -->
+<div class="faq-divider-container">
+    <div class="faq-gradient-line"></div>
+</div>
 
-        // Interactive Live Keyword & Category Search Filter
-        function filterFAQs() {
-            var query = $('#faqSearchInput').val().toLowerCase().trim();
-            var activeCategory = $('.faq-pill.active').data('category');
-            var matchCount = 0;
+<div class="faq-layout-container">
 
-            $('.faq-item').each(function() {
-                var question = $(this).find('.faq-question span').text().toLowerCase();
-                var answer = $(this).find('.faq-answer').text().toLowerCase();
-                var category = $(this).data('category');
+    <!-- FAQ Grid -->
+    <div class="faq-grid" id="faqGrid">
 
-                var matchesQuery = question.includes(query) || answer.includes(query);
-                var matchesCategory = activeCategory === 'all' || category === activeCategory;
+        <!-- Card 1: Pertanyaan Umum -->
+        <div class="faq-category-card" data-category="umum">
+            <div class="faq-card-header">
+                <h3 class="faq-card-title">Pertanyaan Umum</h3>
+            </div>
+            <div class="faq-card-divider"></div>
+            <div class="faq-items-list">
+                <div class="faq-item">
+                    <div class="faq-question-trigger">
+                        <span>Bagaimana cara membeli game di GamInc?</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="faq-question-answer">
+                        Anda dapat membeli game dengan memilih produk yang diinginkan, menambahkannya ke keranjang, lalu menyelesaikan pembayaran melalui metode pembayaran yang tersedia di GamInc.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question-trigger">
+                        <span>Apakah semua game di GamInc original?</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="faq-question-answer">
+                        Ya, seluruh produk game yang dijual di GamInc merupakan produk original dengan lisensi resmi dari publisher maupun distributor terpercaya.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question-trigger">
+                        <span>Kapan saya menerima game setelah pembayaran berhasil?</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="faq-question-answer">
+                      Setelah pembayaran berhasil diverifikasi, pesanan Anda akan segera diproses. Anda dapat memantau status pesanan melalui menu "Pesanan Saya" pada akun GamInc Anda.
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                if (matchesQuery && matchesCategory) {
-                    $(this).show(200);
-                    matchCount++;
-                } else {
-                    $(this).hide(200);
-                }
-            });
+        <!-- Card 2: Langganan -->
+        <div class="faq-category-card" data-category="langganan">
+            <div class="faq-card-header">
+                <h3 class="faq-card-title">Akun & Pembayaran</h3>
+            </div>
+            <div class="faq-card-divider"></div>
+            <div class="faq-items-list">
+                <div class="faq-item">
+                    <div class="faq-question-trigger">
+                        <span>Metode pembayaran apa saja yang tersedia di GamInc?</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="faq-question-answer">
+                        GamInc mendukung berbagai metode pembayaran seperti QRIS, transfer bank, dan e-wallet (GoPay & Ovo) untuk memudahkan transaksi Anda.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question-trigger">
+                        <span>Di mana saya bisa melihat riwayat pembelian saya?</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="faq-question-answer">
+                        Semua riwayat transaksi dapat dilihat pada menu "Pesanan Saya" pada akun GamInc Anda.
+                    </div>
+                </div>
+               <div class="faq-item">
+                    <div class="faq-question-trigger">
+                        <span>Bagaimana cara menghubungkan e-wallet ke akun GamInc?</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="faq-question-answer">
+                        Masuk ke akun GamInc Anda, lalu pilih opsi untuk mengkoneksikan e-wallet. Ikuti langkah verifikasi yang tersedia untuk mengkoneksikan akun e-wallet Anda.
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            // Show or hide the no-results block
-            if (matchCount === 0) {
-                $('.faq-container').hide();
-                $('#faqNoResults').fadeIn(300);
-            } else {
-                $('#faqNoResults').hide();
-                $('.faq-container').show();
-            }
-        }
+        <!-- Card 3: Lisensi Khusus Mac -->
+        <div class="faq-category-card" data-category="lisensi-mac">
+            <div class="faq-card-header">
+                <h3 class="faq-card-title">Game & Redeem</h3>
+            </div>
+            <div class="faq-card-divider"></div>
+            <div class="faq-items-list">
+                <div class="faq-item">
+                    <div class="faq-question-trigger">
+                        <span>Bagaimana cara melacak pesanan game saya?</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="faq-question-answer">
+                        Setelah pesanan dikirim, nomor order akan tersedia pada menu "Pesanan Saya". Anda dapat menggunakan nomor order tersebut untuk melacak status pengiriman pesanan Anda.
+                    </div>
+                 </div>
+                <div class="faq-item">
+                    <div class="faq-question-trigger">
+                        <span>Apakah game yang sudah dibeli bisa dikembalikan?</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="faq-question-answer">
+                        Produk yang sudah berhasil dikirim umumnya tidak dapat dikembalikan, kecuali terjadi kesalahan sistem atau masalah pada pengiriman game.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question-trigger">
+                        <span>Apakah GamInc menjual DLC dan item game?</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="faq-question-answer">
+                        Ya, GamInc juga menyediakan berbagai DLC, gift card, mata uang game, dan item digital lainnya untuk berbagai game populer.
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        // Search text change
-        $('#faqSearchInput').on('input', function() {
-            filterFAQs();
-        });
+        <!-- Card 4: Kemitraan -->
+        <div class="faq-category-card" data-category="kemitraan">
+            <div class="faq-card-header">
+                <h3 class="faq-card-title">Kemitraan</h3>
+            </div>
+            <div class="faq-card-divider"></div>
+            <div class="faq-items-list">
+                <div class="faq-item">
+                    <div class="faq-question-trigger">
+                        <span>Bagaimana cara bekerja sama dengan GamInc?</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="faq-question-answer">
+                        Anda dapat menghubungi tim GamInc melalui halaman kontak untuk mengajukan kerja sama sebagai partner, reseller, maupun content creator.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question-trigger">
+                        <span>Apakah GamInc membuka program reseller?</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="faq-question-answer">
+                        Ya, GamInc menyediakan program reseller untuk penjualan game digital dengan harga khusus dan keuntungan tambahan bagi mitra resmi.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question-trigger">
+                        <span>Apakah partner mendapatkan promo khusus?</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="faq-question-answer">
+                        Partner resmi GamInc berkesempatan mendapatkan promo eksklusif, harga khusus, serta akses lebih awal ke event dan produk terbaru.
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        // Pill clicks
-        $('.faq-pill').click(function() {
-            $('.faq-pill').removeClass('active');
-            $(this).addClass('active');
-            filterFAQs();
-        });
-    });
-</script>
+        <!-- Card 5: Penyelesaian Masalah -->
+        <div class="faq-category-card" data-category="troubleshooting">
+            <div class="faq-card-header">
+                <h3 class="faq-card-title">Penyelesaian Masalah</h3>
+            </div>
+            <div class="faq-card-divider"></div>
+            <div class="faq-items-list">
+                 <div class="faq-item">
+                    <div class="faq-question-trigger">
+                        <span>Mengapa pembayaran saya gagal?</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="faq-question-answer">
+                        Pembayaran dapat gagal karena koneksi terputus, saldo tidak mencukupi, atau gangguan pada metode pembayaran yang digunakan.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question-trigger">
+                        <span>Mengapa pesanan saya belum dikirim?</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="faq-question-answer">
+                        Jika pesanan Anda belum diterima, silakan periksa status pengiriman pada menu "Pesanan Saya". Apabila barang belum kunjung sampai, hubungi tim customer support GamInc untuk bantuan lebih lanjut.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question-trigger">
+                        <span>Bagaimana cara menghubungi customer support GamInc?</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="faq-question-answer">
+                        Anda dapat menghubungi customer support melalui halaman Complaint yang tersedia di website.
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<script src="assets/js/thtoggle.js"></script>
+        <!-- Card 6: Contact CTA -->
+        <div class="faq-contact-card">
+            <div class="faq-contact-info">
+                <h3 class="faq-contact-title">Masih Punya Pertanyaan?</h3>
+                <p class="faq-contact-text">Tim GamInc siap membantu kebutuhan gaming Anda!</p>
+            </div>
+            <a href="complaint" class="faq-contact-button">Hubungi kami</a>
+        </div>
+
+    </div>
+
+    <!-- No Results -->
+    <div class="faq-no-results" id="faqNoResults">
+        <h3>Hasil Pencarian Tidak Ditemukan</h3>
+        <p>Kami tidak menemukan pertanyaan yang sesuai dengan kata kunci Anda. Silakan coba kata kunci lain atau hubungi tim GamInc secara langsung.</p>
+    </div>
+
+</div>
+
+<script src="assets/js/faq.js"></script>

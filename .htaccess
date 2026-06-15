@@ -1,0 +1,14 @@
+# To hide index.php from the URL
+# Before processing a request/URL, the web server checks it via .htaccess
+
+RewriteEngine On
+
+# Prevent looping if index.php is already the destination
+RewriteCond %{REQUEST_URI} !^/index\.php
+
+# Exclude actual files and directories (like CSS, JS, images)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite everything else to index.php with PATH_INFO
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]

@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="./assets/css/gameview-style.css?v=<?= time(); ?>">
 
 
-    <a href="index.php?page=product" class="back-button">
+    <a href="product" class="back-button">
         <i class="fas fa-arrow-left"></i>
         <span>Back</span>
     </a>
@@ -23,7 +23,10 @@
 
         <hr>
             <p class="description" id="description">-</p>
-            <button class="add-to-cart" id="addToCart" onclick="addToCart();">ADD TO CART</button>
+            <div class="action-row" style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                <button class="add-to-cart" id="addToCart" onclick="addToCart();">ADD TO CART</button>
+                <a href="#" class="btn-fav-gameview" onclick="toggleFavorite(); return false;"><i class="fa-regular fa-heart" id="favIcon"></i></a>
+            </div>
         <hr>
 
         <div class="metadata">
@@ -31,16 +34,13 @@
             <p><strong>CATEGORIES:</strong> <span class="category" id="category">-</span></p>
             <p><strong>TAGS:</strong> <span class="tags" id="tags">-</span></p>
         </div>
-
-        <div class="social-share">
-            <a href="#" onclick="toggleFavorite(); return false;"><i class="fa-regular fa-heart" id="favIcon"></i></a>
-            <a href="index.php?page=product#cart"><i class="fa-solid fa-shopping-cart"></i></a>
-            <a href="index.php?page=favorites"><i class="fa-solid fa-bookmark"></i></a>
-        </div>
     </div>
 </div>
 
 <div id="notifContainer"></div>
 
+<script>
+    window.gameviewId = <?= isset($_GET['id']) ? (int)$_GET['id'] : 0 ?>;
+</script>
 <script src="assets/js/gameview.js"></script>
-<script src="assets/js/thtoggle.js"></script>
+

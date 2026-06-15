@@ -6,11 +6,12 @@
       
       <!-- Left Column: Branding and Contact Details -->
       <div class="footer-col footer-col-brand">
-        <h2 class="footer-brand-title">Gam<span>Inc.</span></h2>
+        <h2 class="footer-brand-title">
+          Gam<span style="font-weight: 900; color: #A0C4FF;">i</span><span style="font-weight: 900; color: #BDB2FF;">n</span><span style="font-weight: 900; color: #E8AEFF;">c.</span>
+        </h2>
+        
         <p class="footer-brand-desc">
-          GamInc. Digital Console Hub<br />
-          Jalan Raya Esports No. 99,<br />
-          Sidoarjo, Jawa Timur 61254, Indonesia
+          Jl. Mangga Dua Raya, RT.11/RW.5,<br /> Ancol, Kec. Pademangan, Jkt Utara, <br> Daerah Khusus Ibukota Jakarta 14430
         </p>
         
         <div class="footer-contact-list">
@@ -18,59 +19,39 @@
             <div class="footer-contact-icon">
               <i class="far fa-envelope"></i>
             </div>
-            <a href="mailto:hello@gaminc.com" class="footer-contact-text">hello@gaminc.com</a>
+            <a href="mailto:hello@gaminc.com" class="footer-contact-text">support@gaminc.com</a>
           </div>
           
           <div class="footer-contact-item">
             <div class="footer-contact-icon">
               <i class="fas fa-phone-alt"></i>
             </div>
-            <span class="footer-contact-text">+62 31 9999 9999</span>
-          </div>
-          
-          <div class="footer-contact-item">
-            <div class="footer-contact-icon">
-              <i class="fa-solid fa-tower-broadcast"></i>
-            </div>
-            <span class="footer-contact-text">+62 812 9999 9999</span>
+            <span class="footer-contact-text">Whatsapp: +62 812-9999-9999</span>
           </div>
         </div>
       </div>
       
-      <!-- Middle Column: Products Links -->
+      <!-- Middle Column: Products Links --
+      
+      <!-- Right Column: Support & Help Links -->
       <div class="footer-col">
-        <h4 class="footer-col-title">Our Products</h4>
+        <h4 class="footer-col-title">Administrator</h4>
         <ul class="footer-links">
           <li>
-            <a href="index.php?page=product" class="footer-link-item">
-              <span>PlayStation 5</span> <i class="fa-solid fa-arrow-up footer-arrow"></i>
-            </a>
-          </li>
-          <li>
-            <a href="index.php?page=product" class="footer-link-item">
-              <span>Nintendo Switch 2</span> <i class="fa-solid fa-arrow-up footer-arrow"></i>
-            </a>
-          </li>
-          <li>
-            <a href="index.php?page=product" class="footer-link-item">
-              <span>Others</span> <i class="fa-solid fa-arrow-up footer-arrow"></i>
+            <a href="admin" class="footer-link-item">
+              <span>Login as Administrator</span> <i class="fa-solid fa-arrow-up footer-arrow"></i>
             </a>
           </li>
         </ul>
       </div>
+
       
-      <!-- Right Column: Support & Help Links -->
       <div class="footer-col">
-        <h4 class="footer-col-title">Community & Help</h4>
+        <h4 class="footer-col-title">About</h4>
         <ul class="footer-links">
           <li>
-            <a href="index.php?page=faq" class="footer-link-item">
-              <span>Help & FAQ</span> <i class="fa-solid fa-arrow-up footer-arrow"></i>
-            </a>
-          </li>
-          <li>
-            <a href="administrator/login.php" class="footer-link-item">
-              <span>Admin Panel</span> <i class="fa-solid fa-arrow-up footer-arrow"></i>
+            <a href="credits" class="footer-link-item">
+              <span>About Gaminc</span> <i class="fa-solid fa-arrow-up footer-arrow"></i>
             </a>
           </li>
         </ul>
@@ -84,15 +65,11 @@
     <!-- Bottom Bar -->
     <div class="footer-bottom">
       <div class="footer-bottom-links">
-        <a href="index.php?page=credits">Privacy Policy</a>
-        <a href="index.php?page=credits">Terms of Service</a>
-        <a href="index.php?page=credits">Licenses</a>
       </div>
       <div class="footer-copyright">
-        Copyright &copy; 2026 GAMINC &mdash; Retailing Unforgettable Experiences
+        &copy; 2026 GAMINC - Toko Game Terlengkap
       </div>
     </div>
   </div>
 </footer>
 
-<script src="assets/js/thtoggle.js"></script>

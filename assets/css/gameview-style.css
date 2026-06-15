@@ -16,31 +16,21 @@
   --transition-premium: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.light-mode {
-  --bg-body: #f4f4f5;
-  --bg-card: rgba(0, 0, 0, 0.015);
-
-  --text-main: #09090b;
-  --text-muted: #71717a;
-  --text-inverse: #ffffff;
-
-  --accent-primary: #000000;
-  --accent-secondary: #1a1a1a;
-
-  --border-subtle: rgba(0, 0, 0, 0.06);
-
-  --btn-soft-bg: rgba(0, 0, 0, 0.03);
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: "Plus Jakarta Sans", sans-serif;
-  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease;
 }
 
 body {
+  background-image:
+    linear-gradient(rgba(13, 15, 18, 0.85), rgba(13, 15, 18, 0.75)),
+    url("../img/userbg.png") !important;
   background-color: var(--bg-body);
   color: var(--text-main);
   padding: 160px 20px 80px;
@@ -95,11 +85,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   gap: 60px;
-  box-shadow: 0 40px 80px -20px rgba(0,0,0,0.4);
-}
-
-.light-mode .product-card {
-  box-shadow: 0 30px 60px -15px rgba(0,0,0,0.05);
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.4);
 }
 
 .product-gallery {
@@ -116,7 +102,9 @@ body {
 
 .main-image img {
   width: 100%;
-  height: auto;
+  height: 670px;
+  object-fit: cover;
+  object-position: center;
   display: block;
   border-radius: 24px;
   transition: var(--transition-premium);
@@ -222,25 +210,27 @@ hr {
   gap: 16px;
 }
 
-.social-share a {
+.btn-fav-gameview {
   color: var(--text-muted);
   font-size: 1.25rem;
   transition: var(--transition-premium);
-  width: 48px;
-  height: 48px;
+  width: 54px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--btn-soft-bg);
   border-radius: 50%;
   border: 1px solid var(--border-subtle);
+  text-decoration: none;
 }
 
-.social-share a:hover {
+.btn-fav-gameview:hover {
   color: var(--text-main);
   background: var(--accent-primary);
   color: var(--text-inverse);
   border-color: var(--accent-primary);
+  transform: translateY(-2px);
 }
 
 #notifContainer {
@@ -259,7 +249,7 @@ hr {
   margin-top: 10px;
   opacity: 0;
   transition: var(--transition-premium);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
 .notifAlert.show {

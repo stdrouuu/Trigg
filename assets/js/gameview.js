@@ -1,15 +1,18 @@
-// Load gameview details from database on page load
+// Load detail game saat halaman dibuka
 $(document).ready(function () {
   loadGameview();
 });
 
-// Get product id from URL
+// Ambil ID produk dari URL
 function getProductIdFromURL() {
+  if (typeof window.gameviewId !== "undefined" && window.gameviewId) {
+    return Number(window.gameviewId);
+  }
   var params = new URLSearchParams(window.location.search);
   return Number(params.get("id"));
 }
 
-// Load product details using AJAX
+// Ambil detail produk via AJAX
 function loadGameview() {
   var productId = getProductIdFromURL();
 
@@ -29,7 +32,7 @@ function loadGameview() {
       $("#category").text(product.label);
       $("#tags").text(product.label + ", Games");
 
-      // Set brand text based on label
+      // Set brand teks sesuai label produk
       if (product.label == "PLAYSTATION") {
         $("#productBrand").text("PlayStation");
       } else if (product.label == "SWITCH 2") {
@@ -38,14 +41,19 @@ function loadGameview() {
         $("#productBrand").text("Other");
       }
 
-      // Check if this product is favorited
+      // Cek apakah produk ini difavoritkan
       checkFavoriteStatus(product.id);
     },
   });
 }
 
-// Add to cart from gameview page
+// Tambah ke keranjang dari halaman gameview
 function addToCart() {
+  if (!window.isLoggedIn) {
+    notifAlert("Please log in first!");
+    return;
+  }
+
   var productId = getProductIdFromURL();
 
   $.ajax({
@@ -59,8 +67,8 @@ function addToCart() {
     success: function (response) {
       if (response.success) {
         notifAlert("Product added to cart!");
-        // Automatically slide open the global Cart Sidebar Drawer
-        if (typeof openCartSidebar === 'function') {
+        // Buka drawer keranjang otomatis
+        if (typeof openCartSidebar === "function") {
           openCartSidebar();
         }
       }
@@ -68,8 +76,12 @@ function addToCart() {
   });
 }
 
-// Toggle favorite
+// Toggle status favorit
 function toggleFavorite() {
+  if (!window.isLoggedIn) {
+    notifAlert("Please log in first!");
+    return;
+  }
   var productId = getProductIdFromURL();
 
   $.ajax({
@@ -83,7 +95,7 @@ function toggleFavorite() {
     success: function (response) {
       if (response.status == "added") {
         $("#favIcon").removeClass("fa-regular").addClass("fa-solid");
-        $("#favIcon").css("color", "#ff4d4d");
+        $("#favIcon").css("color", "#E8AEFF");
         notifAlert("Added to Favorites!");
       } else {
         $("#favIcon").removeClass("fa-solid").addClass("fa-regular");
@@ -94,7 +106,7 @@ function toggleFavorite() {
   });
 }
 
-// Check if product is already favorited
+// Cek status favorit produk
 function checkFavoriteStatus(productId) {
   $.ajax({
     url: "api/favorites.php?action=checkFavorite&product_id=" + productId,
@@ -103,13 +115,13 @@ function checkFavoriteStatus(productId) {
     success: function (response) {
       if (response.isFavorited) {
         $("#favIcon").removeClass("fa-regular").addClass("fa-solid");
-        $("#favIcon").css("color", "#ff4d4d");
+        $("#favIcon").css("color", "#E8AEFF");
       }
     },
   });
 }
 
-// Notification alert
+ alert
 function notifAlert(message) {
   var container = $("#notifContainer");
   var box = $('<div class="notifAlert">' + message + "</div>");
@@ -125,4 +137,12 @@ function notifAlert(message) {
       box.remove();
     }, 300);
   }, 3000);
+}
+
+// Cegah klik jika belum login
+function checkAuthLink(event) {
+  if (!window.isLoggedIn) {
+    event.preventDefault();
+    notifAlert("Please log in first!");
+  }
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="<?php echo rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/'; ?>">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GamInc. | Digital Console Retail Platform</title>
@@ -20,6 +21,8 @@
       rel="stylesheet"
     />
 
+    <link rel="icon" href="/412024022_BRANDON_JEREMIAH/components/favicon.ico" type="image/x-icon">
+
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
@@ -27,4 +30,9 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     
+    <!-- Global Session State -->
+    <script>
+        window.isLoggedIn = <?= isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] ? 'true' : 'false' ?>;
+        window.userName = <?= isset($_SESSION['user_name']) ? json_encode($_SESSION['user_name']) : '""' ?>;
+    </script>
   </head>

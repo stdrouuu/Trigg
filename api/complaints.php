@@ -1,5 +1,5 @@
 <?php
-// API for complaints (user-facing)
+// API komplain untuk user
 session_start();
 header('Content-Type: application/json');
 include('../config/db_conn.php');
@@ -10,7 +10,23 @@ if (empty($action) && isset($_POST['action'])) {
     $action = $_POST['action'];
 }
 
-// Submit a new complaint
+// Ambil data komplain milik user
+if ($action == 'getUserComplaints') {
+    $stmt = $conn->prepare("SELECT * FROM complaints WHERE session_id = ? ORDER BY created_at DESC");
+    $stmt->bind_param("s", $session_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $complaints = [];
+    while ($row = $result->fetch_assoc()) {
+        $complaints[] = $row;
+    }
+    echo json_encode($complaints);
+    $stmt->close();
+    $conn->close();
+    exit;
+}
+
+// Kirim komplain baru
 if ($action == 'submit') {
     $category = $conn->real_escape_string($_POST['category'] ?? '');
     $message  = $conn->real_escape_string($_POST['message'] ?? '');

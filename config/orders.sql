@@ -1,11 +1,4 @@
--- ============================================================
--- GamInc. Orders & Complaints Migration
--- Run this in phpMyAdmin on the `gaminc` database
--- ============================================================
-
-USE gaminc;
-
--- Table: orders
+-- Table orders
 CREATE TABLE IF NOT EXISTS orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     session_id VARCHAR(100) NOT NULL,
@@ -13,9 +6,14 @@ CREATE TABLE IF NOT EXISTS orders (
     status ENUM('pending', 'processing', 'shipped', 'delivered') NOT NULL DEFAULT 'pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    email VARCHAR(255) DEFAULT NULL,
+    order_notes TEXT DEFAULT NULL,
+    first_name VARCHAR(255) DEFAULT NULL,
+    address TEXT DEFAULT NULL,
+    phone VARCHAR(50) DEFAULT NULL,
 );
 
--- Table: order_items (products inside an order)
+-- Table order_items 
 CREATE TABLE IF NOT EXISTS order_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT NOT NULL,
@@ -27,7 +25,7 @@ CREATE TABLE IF NOT EXISTS order_items (
     FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
 );
 
--- Table: complaints
+-- Table complaints
 CREATE TABLE IF NOT EXISTS complaints (
     id INT AUTO_INCREMENT PRIMARY KEY,
     session_id VARCHAR(100) NOT NULL,

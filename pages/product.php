@@ -4,7 +4,7 @@
 <!-- product -->
     <section class="products" id="menu">
       <div class="container">
-        <h2 class="section-title"><br>Our Products</h2>
+        <h2 class="section-title"><br>Our <span style="color: #E8AEFF">Products</span></h2>
         <div class="products-grid" id="productsGrid">
           <!-- products loaded here via AJAX -->
         </div>

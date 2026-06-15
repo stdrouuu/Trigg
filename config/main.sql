@@ -1,20 +1,14 @@
--- Database: gaminc
--- Run this SQL in phpMyAdmin to create all tables
-
-CREATE DATABASE IF NOT EXISTS gaminc;
-USE gaminc;
-
--- Table: admin (for admin login)
+-- Table admin 
 CREATE TABLE IF NOT EXISTS admin (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
     password VARCHAR(255) NOT NULL
 );
 
--- Insert default admin (username: admin, password: admin123)
-INSERT INTO admin (username, password) VALUES ('admin', 'admin123');
+-- Insert default admin (username: admin, password: admin123 (hash))
+INSERT INTO admin (username, password) VALUES ('admin', '$2y$10$L12s1Y.3X7zKUX10yqE1IeY07HscC4K1K2XwP8tN/lFkMhXg7d8iK');
 
--- Table: products (for product CRUD)
+-- Table products (CRUD)
 CREATE TABLE IF NOT EXISTS products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -54,7 +48,7 @@ INSERT INTO products (name, price, image, label, description) VALUES
 ('Steam Wallet Gift Card (IDR 60.000)', 63300, 'assets/img/steam.jpg', 'OTHER', 'Add funds to your Steam account for games, items, and marketplace purchases.'),
 ('PlayStation Network Card IDR 200.000', 303300, 'assets/img/psstore.jpg', 'PLAYSTATION', 'Redeem IDR 200.000 credit for PSN games, DLC, subscriptions, and more.');
 
--- Table: cart (for shopping cart)
+-- Table cart 
 CREATE TABLE IF NOT EXISTS cart (
     id INT AUTO_INCREMENT PRIMARY KEY,
     product_id INT NOT NULL,
@@ -64,7 +58,7 @@ CREATE TABLE IF NOT EXISTS cart (
     FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
 );
 
--- Table: favorites (for favorites / wishlist)
+-- Table favorites
 CREATE TABLE IF NOT EXISTS favorites (
     id INT AUTO_INCREMENT PRIMARY KEY,
     product_id INT NOT NULL,

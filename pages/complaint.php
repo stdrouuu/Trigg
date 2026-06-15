@@ -1,54 +1,82 @@
-<link rel="stylesheet" href="./assets/css/complaint-style.css?v=<?= time(); ?>" />
+<link rel="stylesheet" href="./assets/css/complaint-style.css" />
 
-    <a href="index.php?page=user" class="back-button">
-        <i class="fas fa-arrow-left"></i>
-        <span>Back</span>
-    </a>
-
-<div class="complaint-page">
-
-    <!-- Header -->
-    <div class="complaint-header">
-        <div class="complaint-header-icon">
-            <i class="fas fa-headset"></i>
-        </div>
-        <h1>Submit a Complaint</h1>
-        <p>We're here to help. Tell us your issue and we'll review it within 24 hours.</p>
+<!-- Hero Section Full Width -->
+<div class="complaint-hero-full-width">
+    <div class="complaint-hero-content">
+        <h1 class="complaint-hero-title">Kirimkan <span style="color: #A0C4FF;">Komplain</span><br> & Hubungi Kami</h1>
     </div>
+</div>
 
-    <!-- Form Card -->
-    <div class="complaint-form-card" id="complaintFormCard">
-        <form id="complaintForm">
+<!-- Gradient Divider -->
+<div class="complaint-divider-container">
+    <div class="complaint-gradient-line"></div>
+</div>
 
-            <div class="form-group">
-                <label for="complaintCategory">Category <span style="color:#ef4444">*</span></label>
-                <select id="complaintCategory" name="category" required>
-                    <option value="" disabled selected>Select a category</option>
-                    <option value="Payment Issue">Payment Issue</option>
-                    <option value="Wrong Item Received">Wrong Item Received</option>
-                    <option value="Delivery Problem">Delivery Problem</option>
-                    <option value="Key Not Working">Key Not Working</option>
-                    <option value="Refund Request">Refund Request</option>
-                    <option value="Other">Other</option>
-                </select>
+<div class="user-container complaint-layout-container">
+    <div class="complaint-grid">
+        <!-- Left column: Info card -->
+        <div class="complaint-info-card">
+            <div class="complaint-card-header">
+                <h3 class="complaint-card-title">Informasi Bantuan</h3>
             </div>
-
-            <div class="form-group">
-                <label for="complaintOrderId">Order ID <span style="color:var(--text-secondary); font-weight:400;">(optional)</span></label>
-                <input type="number" id="complaintOrderId" name="order_id" placeholder="e.g. 42 — leave blank if not applicable" min="1" />
-                <div class="form-hint">Find your Order ID in <a href="index.php?page=orders" style="color:var(--text-light)">My Orders</a>.</div>
+            <div class="complaint-card-divider"></div>
+            <div class="complaint-info-content">
+                <p>Tim dukungan kami siap membantu Anda menyelesaikan kendala transaksi atau akun.</p>
+                <div class="complaint-info-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                        <strong>Waktu Respon</strong>
+                        <span>> Kurang dari 24 Jam</span>
+                    </div>
+                </div>
+                <div class="complaint-info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <strong>Email Dukungan</strong>
+                        <span>> support@gaminc.com</span>
+                    </div>
+                </div>
+                <div class="complaint-info-item">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <div>
+                        <strong>Butuh Jawaban Cepat?</strong>
+                        <span>>Coba cek halaman <a href="faq" style="color: #A0C4FF; text-decoration: none;">FAQ kami</a> terlebih dahulu.</span>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <div class="form-group">
-                <label for="complaintMessage">Describe your issue <span style="color:#ef4444">*</span></label>
-                <textarea id="complaintMessage" name="message" placeholder="Provide as much detail as possible — include screenshots or transaction references if relevant." required></textarea>
-            </div>
+        <!-- Right column: Form card -->
+        <div class="complaint-form-card" id="complaintFormCard">
+            <form id="complaintForm">
+                <div class="form-group">
+                    <label for="complaintCategory">Kategori <span style="color:#ef4444">*</span></label>
+                    <select id="complaintCategory" name="category" required>
+                        <option value="" disabled selected>Pilih kategori</option>
+                        <option value="Masalah Pembayaran">Masalah Pembayaran</option>
+                        <option value="Item yang Diterima Salah">Item yang Diterima Salah</option>
+                        <option value="Masalah Pengiriman">Masalah Pengiriman</option>
+                        <option value="Permintaan Refund">Permintaan Refund</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                </div>
 
-            <button type="submit" class="btn-submit" id="submitBtn">
-                <i class="fas fa-paper-plane"></i> Submit Complaint
-            </button>
+                <div class="form-group">
+                    <label for="complaintOrderId">Order ID <span style="color:#a1a1aa; font-weight:400;">(opsional)</span></label>
+                    <input type="number" id="complaintOrderId" name="order_id" placeholder="contoh: 42 — biarkan kosong jika tidak ada" min="1" />
+                    <div class="form-hint">Temukan Order ID Anda di "Pesanan Saya"</div>
+                </div>
 
-        </form>
+                <div class="form-group">
+                    <label for="complaintMessage">Deskripsikan kendala Anda <span style="color:#ef4444">*</span></label>
+                    <textarea id="complaintMessage" name="message" placeholder="Berikan detail sebanyak mungkin" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> Kirim Komplain
+                </button>
+            </form>
+        </div>
     </div>
 
     <!-- Success State -->
@@ -56,54 +84,10 @@
         <div class="success-icon">
             <i class="fas fa-check"></i>
         </div>
-        <h2>Complaint Submitted!</h2>
-        <p>Your complaint has been received. Our team will review it and get back to you within 24 hours.</p>
-        <a href="index.php?page=user" class="btn-back-home">Back to Account</a>
+        <h2>Komplain Berhasil Dikirim!</h2>
+        <p>Komplain Anda telah kami terima. Tim kami akan meninjau dan menghubungi Anda kembali dalam waktu 24 jam.</p>
+        <a href="user" class="btn-back-home">Kembali ke Akun</a>
     </div>
-
 </div>
 
-<script>
-$(document).ready(function() {
-    $('#complaintForm').submit(function(e) {
-        e.preventDefault();
-
-        var category = $('#complaintCategory').val();
-        var message  = $('#complaintMessage').val().trim();
-        var orderId  = $('#complaintOrderId').val().trim();
-
-        if (!category || !message) return;
-
-        var $btn = $('#submitBtn');
-        $btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Submitting...');
-
-        $.ajax({
-            url: 'api/complaints.php',
-            type: 'POST',
-            data: {
-                action: 'submit',
-                category: category,
-                message: message,
-                order_id: orderId || ''
-            },
-            dataType: 'json',
-            success: function(response) {
-                if (response.success) {
-                    $('#complaintFormCard').fadeOut(300, function() {
-                        $('#complaintSuccess').fadeIn(400);
-                    });
-                } else {
-                    $btn.prop('disabled', false).html('<i class="fas fa-paper-plane"></i> Submit Complaint');
-                    alert('Error: ' + response.message);
-                }
-            },
-            error: function() {
-                $btn.prop('disabled', false).html('<i class="fas fa-paper-plane"></i> Submit Complaint');
-                alert('Something went wrong. Please try again.');
-            }
-        });
-    });
-});
-</script>
-
-<script src="assets/js/thtoggle.js"></script>
+<script src="assets/js/complaint.js"></script>

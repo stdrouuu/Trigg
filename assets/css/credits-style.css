@@ -2,23 +2,11 @@
   --bg-color: #0d0f12;
   --text-main: #ffffff;
   --text-muted: #a1a1aa;
-  --accent-color: #ffffff;
-  --secondary-bg: rgba(255, 255, 255, 0.05);
-  --social-color: #a1a1aa;
+  --secondary-bg: rgba(255, 255, 255, 0.04);
   --border: rgba(255, 255, 255, 0.08);
   --btn-text-color: #000000;
-  --back-btn-text: #ffffff;
-}
-.light-mode {
-  --bg-color: #f4f4f5;
-  --text-main: #09090b;
-  --text-muted: #71717a;
-  --accent-color: #000000;
-  --secondary-bg: rgba(0, 0, 0, 0.05);
-  --social-color: #71717a;
-  --border: rgba(0, 0, 0, 0.08);
-  --btn-text-color: #ffffff;
-  --back-btn-text: #09090b;
+  --blur: blur(24px);
+  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -26,15 +14,15 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
   background: var(--bg-color);
   color: var(--text-main);
-  transition:
-    background-color 0.3s,
-    color 0.3s;
+  min-height: 100vh;
 }
 
+/* Back Button */
 .back-button {
   position: fixed;
   top: 30px;
@@ -42,136 +30,190 @@ body {
   z-index: 900;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
   font-weight: 500;
-  font-size: 1rem;
-  color: var(--text-main);
-  padding: 12px 20px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  padding: 10px 20px;
   border-radius: 20px;
-  background-color: var(--secondary-bg);
-  backdrop-filter: blur(20px);
+  background: var(--secondary-bg);
+  backdrop-filter: var(--blur);
   border: 1px solid var(--border);
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .back-button:hover {
-  background-color: var(--text-main);
+  background: var(--text-main);
   color: var(--bg-color);
+  border-color: var(--text-main);
 }
 
+/* Page Layout */
 .credits {
-  text-align: center;
-  padding-top: 140px;
-  padding-bottom: 100px;
-  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+}
+
+/* Card */
+.credits-card {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  background: var(--secondary-bg);
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  padding: 56px 52px;
+  max-width: 600px;
+  width: 100%;
+  backdrop-filter: var(--blur);
 }
 
-.credits h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  margin-bottom: 40px;
+/* Avatar */
+.profile-pic {
+  margin-bottom: 28px;
 }
 
 .profile-pic img {
-  width: 180px;
-  height: 180px;
-  border-radius: 32px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  display: block;
 }
 
-.highlight-brandon {
+/* Name & Role */
+.credits-name {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1.05;
+  margin-bottom: 8px;
   color: var(--text-main);
 }
 
-.credits p {
-  max-width: 600px;
-  margin: 24px auto;
-  line-height: 1.8;
+.credits-role {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
   color: var(--text-muted);
-  font-size: 1.1rem;
+  margin-bottom: 32px;
 }
 
+/* Divider */
+.credits-divider {
+  width: 32px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  margin: 0 auto 28px;
+}
+
+/* Bio */
+.credits-bio {
+  max-width: 440px;
+  margin: 0 auto 36px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.credits-bio strong {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+/* Buttons */
 .buttons {
-  margin-top: 40px;
   display: flex;
-  gap: 16px;
+  gap: 12px;
   justify-content: center;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
 }
 
 .btn-primary,
 .btn-secondary {
-  display: inline-block;
-  padding: 16px 32px;
-  border-radius: 30px;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 26px;
+  font-weight: 700;
+  font-size: 0.875rem;
   text-decoration: none;
-  transition: transform 0.3s;
+  transition: var(--transition);
 }
 
 .btn-primary {
-  background-color: var(--accent-color);
+  background: var(--text-main);
   color: var(--btn-text-color);
 }
 
+.btn-primary:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
 .btn-secondary {
-  background: var(--secondary-bg);
+  background: transparent;
   border: 1px solid var(--border);
   color: var(--text-main);
 }
 
-.btn-primary:hover,
 .btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
   transform: translateY(-2px);
 }
 
+/* Socials */
 .socials {
-  margin-top: 60px;
   display: flex;
-  gap: 20px;
+  gap: 10px;
+  justify-content: center;
 }
 
 .socials a {
-  color: var(--text-main);
-  font-size: 1.5rem;
-  transition: opacity 0.3s;
-  width: 56px;
-  height: 56px;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  text-decoration: none;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--secondary-bg);
   border-radius: 50%;
   border: 1px solid var(--border);
+  transition: var(--transition);
 }
 
 .socials a:hover {
-  opacity: 0.8;
+  background: var(--text-main);
+  color: var(--bg-color);
+  border-color: var(--text-main);
+  transform: translateY(-2px);
 }
 
-@media (max-width: 768px) {
-  .credits h1 {
-    font-size: 2.5rem;
+/* Responsive */
+@media (max-width: 600px) {
+  .credits-card {
+    padding: 44px 24px;
+    border-radius: 24px;
   }
-  .credits p {
-    margin: 0 30px;
-    font-size: 1rem;
+
+  .credits-name {
+    font-size: 2.2rem;
   }
-  .buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  .btn-primary,
-  .btn-secondary {
-    width: 100%;
-    max-width: 300px;
-  }
+
   .back-button {
     top: 20px;
     left: 20px;

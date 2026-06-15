@@ -1,4 +1,4 @@
-// Auth login using AJAX
+// Login via AJAX
 $(document).ready(function () {
   $("#loginBtn").click(function () {
     var username = $("#username").val();
@@ -20,7 +20,7 @@ $(document).ready(function () {
       dataType: "json",
       success: function (response) {
         if (response.success) {
-          window.location.href = "index.php?page=main";
+          window.location.href = "main";
         } else {
           $("#errorMsg").text(response.message).show();
         }
@@ -28,7 +28,7 @@ $(document).ready(function () {
     });
   });
 
-  // Allow enter key to login
+  // Izinkan tombol Enter untuk login
   $("#password").keypress(function (e) {
     if (e.which == 13) {
       $("#loginBtn").click();

@@ -1,98 +1,66 @@
 <link rel="stylesheet" href="./assets/css/main-style.css?v=<?= time(); ?>" />
 
 
-    <!-- bootsrap carousel -->
-      <div id="carouselExample" class="carousel slide">
+    <!-- Hero Section with Bootstrap Carousel-->
+    <div class="hero-section">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-interval="false">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="./assets/img/banner7.jpg" class="d-block w-100"/>
+            <div class="hero-bg" style="background-image: url('./assets/img/banner10.jpeg');"></div>
           </div>
           <div class="carousel-item">
-            <img src="./assets/img/banner6.jpg" class="d-block w-100"/>
+            <div class="hero-bg" style="background-image: url('./assets/img/banner0.jpg');"></div>
           </div>
           <div class="carousel-item">
-            <img src="./assets/img/banner8.jpg" class="d-block w-100"/>
+            <div class="hero-bg" style="background-image: url('./assets/img/banner7.jpg');"></div>
           </div>
           <div class="carousel-item">
-            <img src="./assets/img/banner1.jpg" class="d-block w-100"/>
-          </div>
-          <div class="carousel-item">
-            <img src="./assets/img/banner4.jpg" class="d-block w-100"/>
-          </div>
-          <div class="carousel-item">
-            <img src="./assets/img/banner3.jpg" class="d-block w-100"/>
-          </div>
-        </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="prev"
-          style="color: #00FFFF; font-size: 3rem;"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="next"
-          style="color: #00FFFF; font-size: 3rem;"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
-      </div>
-
-      <!-- our collection -->
-      <div class="our-collection">
-        <div class="container">
-          <h2 class="section-title">Our Collections</h2>
-          <div class="ourcollection-grid">
-            <div class="ourcollection-card">
-
-              <div class="ourcollection-image-1">
-                <i class="fa-brands fa-playstation"></i>
-              </div>
-              <h3>PS4 & PS5</h3>
-              <p>Complete Game titles for PlayStation consoles !</p>
-              <button class="ourcollection-btn">
-                View Details
-              </button>
-            </div>
-
-            <div class="ourcollection-card">
-              <div class="ourcollection-image-2">
-                <i class="fa-solid fa-gamepad"></i>
-              </div>
-              <h3>Nintendo Switch 2</h3>
-              <p>Variety of games available for the Nintendo console !</p>
-              <button class="ourcollection-btn">
-                Pre-Order
-              </button>
-            </div>
-
-            <div class="ourcollection-card">
-              <div class="ourcollection-image-3">
-                <i class="fas fa-star"></i>
-              </div>
-              <h3>Newest Games</h3>
-              <p>Explore the latest and greatest game titles !</p>
-              <button class="ourcollection-btn">
-                Browse All
-              </button>
-            </div>
+            <div class="hero-bg" style="background-image: url('./assets/img/banner11.jpg');"></div>
           </div>
         </div>
       </div>
+      
+      <div class="hero-overlay"></div>
+      
+      <div class="hero-container">
+        <div class="hero-content">
+          <span class="hero-badge">Toko Game Terlengkap</span>
+          <h1 class="hero-title">Mainkan Game<br>Impianmu, hanya di<br>
+          Gam<span style="color: #A0C4FF;">i</span><span style="color: #BDB2FF;">n</span><span style="color: #E8AEFF;">c</span><span style="color: #FFC6FF;">!</span></h1>
+          <p class="hero-desc">
+            Gaminc. hadir sebagai surga belanja para gamer. Dapatkan rilisan game PlayStation dan Nintendo Switch 2 paling hits, 100% produk original, serta pengiriman gratis ongkir ke seluruh Indonesia.
+          </p>
+          <div class="hero-buttons">
+            <a href="product" class="btn-hero-primary">Eksplor Game</a>
+            <a href="#testimonials" class="btn-hero-outline">Cek Info</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Standard Bootstrap Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+
+      <!-- Bootstrap Pagination -->
+ 
+    </div>
+
 
     <!-- new arrival -->
     <div class="container">
       <div class="new-arrival">
         <div class="arrival-left-banner">
-          <h3>NEW<br />ARRIVAL</h3>
+          <h3>NEW<br />
+          <span style="color: #BDB2FF;">ARRIVAL</span>
+        </h3>
           <p>Be the first to own new items !</p>
-          <button onclick="location.href='index.php?page=product'" class="arrival-left-btn">Go to Products</button>
+          <button onclick="location.href='product'" class="arrival-left-btn">Go to Products</button>
         </div>
 
         <div class="arrival-right-grid">
@@ -102,7 +70,7 @@
             </div>
             <h3>NBA 2K26 </h3>
             <p class="arrival-right-price">Rp 815.000</p>
-            <button class="see-more" onclick="location.href='index.php?page=product'">See More</button>
+            <button class="see-more" onclick="location.href='product'">See More</button>
           </div>
 
           <div class="arrival-right-card">
@@ -111,7 +79,7 @@
             </div>
             <h3>Ninja Gaiden 4</h3>
             <p class="arrival-right-price">Rp 1.024.000</p>
-            <button class="see-more" onclick="location.href='index.php?page=product'">See More</button>
+            <button class="see-more" onclick="location.href='product'">See More</button>
           </div>
 
           <div class="arrival-right-card">
@@ -120,7 +88,7 @@
             </div>
             <h3>FC 26</h3>
             <p class="arrival-right-price">Rp 760.000</p>
-            <button class="see-more" onclick="location.href='index.php?page=product'">See More</button>
+            <button class="see-more" onclick="location.href='product'">See More</button>
           </div>
 
           <div class="arrival-right-card">
@@ -129,7 +97,7 @@
             </div>
             <h3>Ghost of Yōtei</h3>
             <p class="arrival-right-price">Rp 1.029.000</p>
-            <button class="see-more" onclick="location.href='index.php?page=product'">See More</button>
+            <button class="see-more" onclick="location.href='product'">See More</button>
           </div>
         </div>
       </div>
@@ -138,86 +106,162 @@
 
 
     <!-- best selling games -->
-      <div class="container">
-        <h2 class="section-title">Best-Selling Games</h2>
-            <div class="game-grid-container">
+      <div class="container my-5">
+        <h2 class="section-title">Best Selling 
+          <span style="color: #A0C4FF;">GAMES</span>
+        </h2>
+        <div class="game-grid-container" style="margin-bottom: 40px;">
 
-              <div class="grid-column-left">
-                <div class="grid-item large-left">
-                  <a href="index.php?page=gameview&id=11">
-                    <img src="./assets/img/spidermanmiles.png"/>
-                  </a>
+          <div class="grid-column-left">
+            <div class="grid-item large-left" style="height: 100%;">
+              <a href="product/10" style="display: block; height: 100%;">
+                <img src="./assets/img/tlou2.png"/>
+                <div class="grid-item-overlay">
+                  <span class="grid-item-badge">Terlaris #1</span>
+                  <h3 class="grid-item-title">The Last of Us Part II</h3>
+                  <p class="grid-item-price">Rp 850.000</p>
                 </div>
-              </div>
-
-              <div class="grid-column-right">
-                <div class="grid-item small-right-top">
-                  <a href="index.php?page=gameview&id=8">
-                    <img src="./assets/img/gow.png"/>
-                  </a>
-                </div>
-                
-                <div class="grid-item small-right-bottom">
-                  <a href="index.php?page=gameview&id=7">
-                    <img src="./assets/img/tlou1.png"/>
-                  </a>
-                </div>
-              </div>
+              </a>
             </div>
+          </div>
 
-            <div class="grid-item banner-grid-item">
-              <a href="index.php?page=gameview&id=20">
-                <img src="./assets/img/banner2.jpg"/>
+          <div class="grid-column-right">
+            <div class="grid-item small-right-top">
+              <a href="product/3" style="display: block; height: 100%;">
+                <img src="./assets/img/kirby.jpg"/>
+                <div class="grid-item-overlay">
+                  <span class="grid-item-badge">Terlaris #2</span>
+                  <h3 class="grid-item-title">Kirby: Air Riders</h3>
+                  <p class="grid-item-price">Rp 950.000</p>
+                </div>
               </a>
             </div>
             
+            <div class="grid-item small-right-bottom">
+              <a href="product/11" style="display: block; height: 100%;">
+                <img src="./assets/img/spidermanmiles.png"/>
+                <div class="grid-item-overlay">
+                  <span class="grid-item-badge">Terlaris #3</span>
+                  <h3 class="grid-item-title">Spiderman: Miles Morales</h3>
+                  <p class="grid-item-price">Rp 350.000</p>
+                </div>
+              </a>
+            </div>
           </div>
+        </div>
+
+        <div class="grid-item banner-grid-item" style="margin-bottom: 60px;">
+          <a href="product/20" style="display: block; height: 100%;">
+            <img src="./assets/img/banner22.jpg"/>
+            <div class="grid-item-overlay">
+              <span class="grid-item-badge" style="background: #ef4444; color: #fff;">Promo Spesial</span>
+              <h3 class="grid-item-title">Eksplor Penawaran Menarik Lainnya</h3>
+              <p class="grid-item-desc" style="color: rgba(255,255,255,0.8); margin: 0;">Dapatkan diskon hingga 50% untuk judul-judul game pilihan minggu ini.</p>
+            </div>
+          </a>
         </div>
       </div>
 
-    <!-- about -->
-    <section id="about" class="about">
-      <div class="container">
-        <h2 class="section-title">About GamInc.</h2>
-        <div class="about-content">
-          <div class="about-text">
-            <p>
-                GamInc. is your ultimate destination for premium PlayStation and Nintendo gaming products. 
-                We offer the latest games, consoles, and accessories designed to elevate your gaming experience.
-            </p>
-            <p>
-                Driven by a passion for gaming and a commitment to quality, we ensure that every product meets 
-                the highest standards. Our mission is to make gaming more accessible, enjoyable, and rewarding 
-                for everyone.
-            </p>
+    <!-- Testimonial Highlight Section -->
+    <section id="testimonials" class="testimonial-highlight-section">
+      <!-- Background Character Graphics -->
+      <img src="./assets/img/Jin3.png" alt="Jin Kazama (Tekken)" class="testimonial-bg-char-left">
+      <img src="./assets/img/adawong.png" alt="Ada Wong (Resident Evil)" class="testimonial-bg-char-right">
 
-            <div class="features">
-                <div class="feature-card">
-                  <i class="fas fa-shipping-fast" style="color: #ff3441ff"></i>
-                  <h4>Fast Delivery</h4>
-                  <p>Quick and reliable shipping nationwide</p>
-                </div>
-                <div class="feature-card">
-                  <i class="fas fa-circle-check" style="color: #44ef86ff"></i>
-                  <h4>Authentic Products</h4>
-                  <p>100% certified, original, and ready for action</p>
-                </div>
-                <div class="feature-card">
-                  <i class="fas fa-headset" style="color: #fbbf24"></i>
-                  <h4>24/7 Support</h4>
-                  <p>Customer support whenever you need it</p>
-                </div>
+      <div class="container" style="position: relative; z-index: 2;">
+        <!-- Centered Header -->
+        <div class="testimonial-header">
+          <span class="testimonial-badge">Apa Kata Mereka ?</span>
+          <h2 class="testimonial-section-title">Gamer Puas, Kami Senang!</h2>
+          <p class="testimonial-section-desc">Ribuan gamer di Indonesia telah mempercayai GamInc. sebagai destinasi belanja game original terbaik mereka.</p>
+        </div>
+
+        <!-- 3-Column Grid Layout -->
+        <div class="testimonial-grid-layout">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             </div>
-            
+            <p class="testimonial-text">"Pelayanan super cepat! Game yang saya pesan sampai dalam 2 hari dan semuanya original. Pasti bakal belanja lagi di sini!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: #A0C4FF; color: #000;">
+                <span>R</span>
+              </div>
+              <div class="testimonial-meta">
+                <h4>Rizky Pratama</h4>
+                <span class="testimonial-role">Verified Buyer</span>
+              </div>
+            </div>
           </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"Koleksi game-nya lengkap banget, dari PS5 sampai Switch 2 semua ada. Harga juga bersaing. Recommended banget!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: #E8AEFF; color: #000;">
+                <span>A</span>
+              </div>
+              <div class="testimonial-meta">
+                <h4>Anisa Dewi</h4>
+                <span class="testimonial-role">Verified Buyer</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            </div>
+            <p class="testimonial-text">"Support-nya ramah dan fast response. Pernah ada masalah pengiriman tapi langsung dibantu sampai selesai. Mantap!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: #BDB2FF; color: #000;">
+                <span>D</span>
+              </div>
+              <div class="testimonial-meta">
+                <h4>Dimas Ardianto</h4>
+                <span class="testimonial-role">Verified Buyer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial Footer Note -->
+        <div class="testimonial-more">
+          <p class="testimonial-more-text">dan 1000+ testimoni lainnya > </p>
         </div>
       </div>
     </section>
 
+      <!-- Community Card Section -->
+      <div class="container my-5">
+        <div class="community-card">
+          <!-- discordbanner bg GRAYSCALE -->
+          <div class="community-card-bg"></div>
+          <div class="community-overlay"></div>
+          <div class="community-content">
+            <!-- <h2 class="community-title">Jangan Main Sendirian !</h2> -->
+            <h2 class="community-title">Mabar Lebih Seru Bareng Komunitas !</h2>
+            <p class="community-desc">
+              Dapatkan info promo eksklusif, cari teman mabar, dan ikuti giveaway menarik dengan bergabung ke komunitas gamer kami sekarang, GRATIS !
+            </p>
+            <a href="https://discord.gg" target="_blank" class="btn-community-join">
+              <i class="fa-brands fa-discord me-2"></i> Gabung Komunitas
+            </a>
+          </div>
+        </div>
+      </div>
+
     <!-- contact us  -->
     <section id="contact" class="contact">
       <div class="container">
-        <h2 class="section-title">Contact Us</h2>
+        <h2 class="section-title">Contact 
+          <span style="color: #E8AEFF">Us</span>
+        </h2>
         <div class="contact-content">
           <div class="contact-info">
 
@@ -225,7 +269,7 @@
               <i class="fas fa-envelope"></i>
                 <div>
                   <h4>Email</h4>
-                  <p>support.gaminc@gaminc.com</p>
+                  <p>support@gaminc.com</p>
                 </div>
             </div>
 
@@ -272,13 +316,6 @@
             <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
             <a href="#" class="social-icon"><i class="fab fa-twitter" ></i></a>
           </div>
-        </div>
-
-        <!-- Admin Login Link -->
-        <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color);">
-          <a href="administrator/login.php" style="color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: all 0.3s ease;">
-            <i class="fas fa-user-shield"></i> Administrator Login
-          </a>
         </div>
 
       </div>

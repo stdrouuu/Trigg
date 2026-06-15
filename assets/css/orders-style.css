@@ -1,155 +1,195 @@
-/* =============================================
-   orders-style.css — GamInc. My Orders Page
-   ============================================= */
-
 :root {
   --bg-dark: #0d0f12;
   --card-dark: rgba(255, 255, 255, 0.035);
   --border: rgba(255, 255, 255, 0.08);
   --text-light: #ffffff;
   --text-secondary: #a1a1aa;
-  --accent: #00e5ff;
+  --accent: #bdb2ff;
   --blur: blur(20px);
 }
-.light-mode {
-  --bg-dark: #f4f4f5;
-  --card-dark: rgba(0, 0, 0, 0.03);
-  --border: rgba(0, 0, 0, 0.08);
-  --text-light: #09090b;
-  --text-secondary: #71717a;
+
+html {
+  scrollbar-gutter: stable;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Plus Jakarta Sans", sans-serif; transition: background-color 0.3s, color 0.3s; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
 
 body {
   background-color: var(--bg-dark);
+  background-image:
+    linear-gradient(rgba(13, 15, 18, 0.9), rgba(13, 15, 18, 0.85)),
+    url("../img/userbg.png") !important;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: var(--text-light);
   line-height: 1.6;
 }
 
-/* ── Back Button ─────────────────────────────── */
+/* Back Button */
 .back-button {
   position: fixed;
-  top: 24px;
-  left: 24px;
+  top: 28px;
+  left: 28px;
   z-index: 900;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   color: var(--text-light);
-  padding: 10px 18px;
-  border-radius: 16px;
+  padding: 12px 22px;
+  border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.05);
   backdrop-filter: var(--blur);
   border: 1px solid var(--border);
   transition: all 0.25s ease;
 }
-.back-button:hover { background-color: var(--text-light); color: var(--bg-dark); }
-.back-button:hover i { color: var(--bg-dark); }
+.back-button:hover {
+  background-color: var(--text-light);
+  color: var(--bg-dark);
+}
+.back-button:hover i {
+  color: var(--bg-dark);
+}
 
-/* ── Page Container ──────────────────────────── */
+/* Page Container */
 .orders-page {
-  max-width: 700px;
-  margin: 110px auto 80px;
-  padding: 0 20px;
+  max-width: 840px;
+  margin: 130px auto 100px;
+  padding: 0 24px;
 }
 
 .orders-page-title {
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   letter-spacing: -0.5px;
 }
 
-/* ── Filter Tabs ─────────────────────────────── */
+/* Filter Tabs */
 .filter-tabs {
   display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 10px;
+  margin-bottom: 28px;
   flex-wrap: wrap;
 }
 .filter-tab {
-  padding: 8px 18px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.04);
+  padding: 10px 22px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border);
   color: var(--text-secondary);
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   user-select: none;
 }
-.filter-tab:hover { border-color: rgba(255,255,255,0.2); color: var(--text-light); }
+.filter-tab:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-light);
+}
 .filter-tab.active {
   background: var(--text-light);
   color: var(--bg-dark);
   border-color: var(--text-light);
 }
-.light-mode .filter-tab.active {
-  background: #09090b;
-  color: #fff;
-  border-color: #09090b;
-}
 
-/* ── Order Cards ─────────────────────────────── */
+/* Order Cards */
 .orders-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .order-card {
   background: var(--card-dark);
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 24px;
   overflow: hidden;
   backdrop-filter: var(--blur);
-  transition: border-color 0.25s ease, transform 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
 }
-.order-card:hover { border-color: rgba(255,255,255,0.16); transform: translateY(-2px); }
+.order-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+}
 
 .order-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 20px 0;
+  padding: 22px 24px 0;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
 }
 
 .order-id {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
   font-weight: 600;
   letter-spacing: 0.5px;
 }
 
 .order-date {
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
 }
 
-/* ── Status Badge ────────────────────────────── */
+/* Status Badge */
+.order-card.status-pending {
+  --status-color: #ffe082;
+  --status-color-rgba: rgba(255, 224, 130, 0.15);
+}
+.order-card.status-processing {
+  --status-color: #a0c4ff;
+  --status-color-rgba: rgba(160, 196, 255, 0.12);
+}
+.order-card.status-shipped {
+  --status-color: #b4a1fd;
+  --status-color-rgba: rgba(195, 181, 253, 0.15);
+}
+.order-card.status-delivered {
+  --status-color: #93e095;
+  --status-color-rgba: rgba(165, 214, 167, 0.15);
+}
+
 .status-badge {
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.3px;
   text-transform: uppercase;
+  background: transparent !important;
+  padding: 0;
 }
-.status-pending    { background: rgba(251,191,36,0.15);  color: #fbbf24; }
-.status-processing { background: rgba(0,229,255,0.12);   color: #00e5ff; }
-.status-shipped    { background: rgba(139,92,246,0.15);  color: #a78bfa; }
-.status-delivered  { background: rgba(68,239,134,0.15);  color: #44ef86; }
+.status-pending {
+  color: #ffe082;
+}
+.status-processing {
+  color: #a0c4ff;
+}
+.status-shipped {
+  color: #c3b5fd;
+}
+.status-delivered {
+  color: #a5d6a7;
+}
 
-/* ── Delivery Progress Bar ───────────────────── */
+/* Delivery Progress Bar */
 .delivery-progress {
-  padding: 18px 20px;
+  padding: 24px;
 }
 
 .progress-steps {
@@ -159,25 +199,20 @@ body {
   position: relative;
 }
 
-/* Connecting line behind steps */
-.progress-steps::before {
-  content: '';
+.progress-line-container {
   position: absolute;
-  top: 18px;
-  left: 18px;
-  right: 18px;
+  top: 6px;
+  left: 12.5%;
+  right: 12.5%;
   height: 2px;
   background: var(--border);
   z-index: 0;
 }
 
 .progress-fill {
-  position: absolute;
-  top: 18px;
-  left: 18px;
-  height: 2px;
-  background: linear-gradient(90deg, #44ef86, #00e5ff);
-  z-index: 1;
+  height: 100%;
+  background: var(--status-color);
+  width: 0;
   transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -185,188 +220,165 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   flex: 1;
   position: relative;
   z-index: 2;
 }
 
 .step-dot {
-  width: 36px;
-  height: 36px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: var(--bg-dark);
+  background: #5c5c5c;
   border: 2px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
   transition: all 0.4s ease;
   box-shadow: 0 0 0 4px var(--bg-dark);
 }
 
 .progress-step.done .step-dot {
-  background: #44ef86;
-  border-color: #44ef86;
-  color: #000;
+  background: var(--status-color);
+  border-color: var(--status-color);
 }
 .progress-step.active .step-dot {
-  background: #00e5ff;
-  border-color: #00e5ff;
-  color: #000;
-  box-shadow: 0 0 0 4px var(--bg-dark), 0 0 12px rgba(0,229,255,0.4);
-  animation: pulseDot 1.8s infinite;
-}
-
-@keyframes pulseDot {
-  0%, 100% { box-shadow: 0 0 0 4px var(--bg-dark), 0 0 10px rgba(0,229,255,0.35); }
-  50%       { box-shadow: 0 0 0 4px var(--bg-dark), 0 0 22px rgba(0,229,255,0.65); }
+  background: var(--status-color);
+  border-color: var(--status-color);
+  box-shadow: 0 0 0 4px var(--bg-dark);
 }
 
 .step-label {
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-secondary);
   text-align: center;
-  max-width: 60px;
+  max-width: 72px;
 }
 .progress-step.done .step-label,
 .progress-step.active .step-label {
   color: var(--text-light);
 }
 
-/* ── Order Footer ─────────────────────────────── */
+/* Order Footer */
 .order-card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 20px 18px;
+  padding: 16px 24px 22px;
   border-top: 1px solid var(--border);
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
 }
 
 .order-total {
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-light);
 }
 .order-items-count {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
   font-weight: 500;
 }
 
 .btn-view-detail {
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border);
   color: var(--text-light);
-  padding: 8px 18px;
-  border-radius: 12px;
-  font-size: 0.85rem;
+  padding: 10px 22px;
+  border-radius: 14px;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.btn-view-detail:hover { background: var(--text-light); color: var(--bg-dark); }
+.btn-view-detail:hover {
+  background: var(--text-light);
+  color: var(--bg-dark);
+}
 
-/* ── Order Items Detail (Expandable) ─────────── */
+/* Order Items Detail (Expandable) */
 .order-items-detail {
   display: none;
-  padding: 0 20px 18px;
+  padding: 0 24px 22px;
   border-top: 1px solid var(--border);
-  gap: 10px;
+  gap: 12px;
   flex-direction: column;
 }
-.order-items-detail.open { display: flex; }
+.order-items-detail.open {
+  display: flex;
+}
 
 .order-item-row {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 .order-item-row img {
-  width: 48px;
-  height: 48px;
+  width: 58px;
+  height: 58px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
   border: 1px solid var(--border);
 }
 .order-item-name {
   flex: 1;
-  font-size: 0.88rem;
+  font-size: 1.05rem;
   font-weight: 500;
   color: var(--text-light);
 }
 .order-item-qty {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
 }
 .order-item-price {
-  font-size: 0.88rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--text-light);
 }
 
-/* ── Empty State ─────────────────────────────── */
+/* Empty State */
 .empty-orders {
   text-align: center;
-  padding: 80px 20px;
+  padding: 96px 24px;
   color: var(--text-secondary);
 }
 .empty-orders i {
-  font-size: 3.5rem;
-  margin-bottom: 16px;
+  font-size: 4.2rem;
+  margin-bottom: 20px;
   opacity: 0.4;
 }
 .empty-orders h3 {
-  font-size: 1.2rem;
+  font-size: 1.45rem;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: var(--text-light);
 }
-.empty-orders p { font-size: 0.9rem; }
+.empty-orders p {
+  font-size: 1.1rem;
+}
 .empty-orders .btn-shop {
   display: inline-block;
-  margin-top: 20px;
-  padding: 10px 24px;
+  margin-top: 24px;
+  padding: 12px 28px;
   background: var(--text-light);
   color: var(--bg-dark);
-  border-radius: 14px;
+  border-radius: 16px;
   font-weight: 600;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   transition: opacity 0.2s;
 }
-.empty-orders .btn-shop:hover { opacity: 0.8; }
-
-/* ── Loading Skeleton ─────────────────────────── */
-.skeleton-card {
-  background: var(--card-dark);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.skeleton-line {
-  height: 14px;
-  border-radius: 8px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.04) 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-@keyframes shimmer {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+.empty-orders .btn-shop:hover {
+  opacity: 0.8;
 }
 
 @media (max-width: 480px) {
-  .orders-page { margin-top: 90px; padding: 0 14px; }
-  .step-label { font-size: 0.62rem; max-width: 50px; }
-  .step-dot { width: 30px; height: 30px; font-size: 0.75rem; }
-  .progress-steps::before { top: 15px; }
-  .progress-fill { top: 15px; }
+  .orders-page {
+    margin-top: 110px;
+    padding: 0 16px;
+  }
+  .step-label {
+    font-size: 0.75rem;
+    max-width: 60px;
+  }
 }

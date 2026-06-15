@@ -214,5 +214,13 @@ const products = [
         image: "./assets/img/steam.jpg",
         category: "Other",
         description: "Instant digital code for PlayStation Store purchases worth IDR 200.000."
+    },
+    {
+        id: 28,
+        name: "Tekken 7",
+        price: 599000,
+        image: "./assets/img/tekken7.jpg",
+        category: "Playstation",
+        description: "One of the most successful fighting games in the world, Tekken 7 combines the adrenaline of the arcade with the precision of a fighting simulator."
     }
 ];

@@ -1,10 +1,10 @@
 <?php
-// Admin Product CRUD API
+// API CRUD Produk 
 session_start();
 header('Content-Type: application/json');
 include('../../config/db_conn.php');
 
-// Check if admin is logged in
+// Cek session admin
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] != true) {
     echo json_encode(["success" => false, "message" => "Unauthorized"]);
     exit;
@@ -15,7 +15,7 @@ if (empty($action) && isset($_POST['action'])) {
     $action = $_POST['action'];
 }
 
-// Get all products
+// Ambil semua produk
 if ($action == 'getAll') {
     $sql = "SELECT * FROM products ORDER BY id DESC";
     $result = $conn->query($sql);
@@ -28,18 +28,18 @@ if ($action == 'getAll') {
     echo json_encode($products);
 }
 
-// Add product
+// Tambah produk baru
 if ($action == 'addProduct') {
     $name = $conn->real_escape_string($_POST['name']);
     $price = intval($_POST['price']);
     $label = $conn->real_escape_string($_POST['label']);
     $description = $conn->real_escape_string($_POST['description']);
 
-    // Handle image upload
+    // Proses upload gambar produk
     $imagePath = '';
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $uploadDir = '../../assets/img/';
-        $fileName = time() . '_' . basename($_FILES['image']['name']);
+        $fileName = time() . '_'. basename($_FILES['image']['name']);
         $targetFile = $uploadDir . $fileName;
 
         if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
@@ -57,7 +57,7 @@ if ($action == 'addProduct') {
     }
 }
 
-// Update product
+// Update data produk
 if ($action == 'updateProduct') {
     $id = intval($_POST['id']);
     $name = $conn->real_escape_string($_POST['name']);
@@ -65,10 +65,14 @@ if ($action == 'updateProduct') {
     $label = $conn->real_escape_string($_POST['label']);
     $description = $conn->real_escape_string($_POST['description']);
 
-    // Check if new image uploaded
+    // Cek jika ada file gambar baru
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $uploadDir = '../../assets/img/';
-        $fileName = time() . '_' . basename($_FILES['image']['name']);
+        // ini kalau buat gaada angka depannya pas masukin foto di admiin
+        // 17281931_nama-image.jpg
+        // $fileName = basename($_FILES['image']['name']); 
+
+        $fileName = time() . '_'. basename($_FILES['image']['name']);
         $targetFile = $uploadDir . $fileName;
 
         if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
@@ -86,7 +90,7 @@ if ($action == 'updateProduct') {
     }
 }
 
-// Delete product
+// Hapus produk dari database
 if ($action == 'deleteProduct') {
     $id = intval($_POST['id']);
 

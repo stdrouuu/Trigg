@@ -6,13 +6,6 @@
   --footer-input-bg: rgba(255, 255, 255, 0.03);
 }
 
-.light-mode {
-  --bg-footer: #f4f4f5;
-  --border-footer: rgba(0, 0, 0, 0.08);
-  --text-footer-primary: #09090b;
-  --text-footer-secondary: #71717a;
-  --footer-input-bg: rgba(0, 0, 0, 0.02);
-}
 
 .footer {
   background: var(--bg-footer);
@@ -244,6 +237,5 @@
   white-space: nowrap;
 }
 
-.light-mode .footer-watermark {
-  opacity: 0.04;
-}
+
+

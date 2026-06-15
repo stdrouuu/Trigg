@@ -1,101 +1,169 @@
-/* =============================================
-   complaint-style.css — GamInc. Complaint Form
-   ============================================= */
-
 :root {
   --bg-dark: #0d0f12;
-  --card-dark: rgba(255, 255, 255, 0.035);
-  --border: rgba(255, 255, 255, 0.08);
   --text-light: #ffffff;
-  --text-secondary: #a1a1aa;
-  --accent: #00e5ff;
-  --blur: blur(20px);
-}
-.light-mode {
-  --bg-dark: #f4f4f5;
-  --card-dark: rgba(0, 0, 0, 0.03);
-  --border: rgba(0, 0, 0, 0.08);
-  --text-light: #09090b;
-  --text-secondary: #71717a;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Plus Jakarta Sans", sans-serif; transition: background-color 0.3s, color 0.3s; }
-
-body { background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; }
-
-/* ── Back Button ─────────────────────────────── */
-.back-button {
-  position: fixed;
-  top: 24px;
-  left: 24px;
-  z-index: 900;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-  color: var(--text-light);
-  padding: 10px 18px;
-  border-radius: 16px;
-  background-color: rgba(255, 255, 255, 0.05);
-  backdrop-filter: var(--blur);
-  border: 1px solid var(--border);
-  transition: all 0.25s ease;
-}
-.back-button:hover { background-color: var(--text-light); color: var(--bg-dark); }
-.back-button:hover i { color: var(--bg-dark); }
-
-/* ── Page Container ──────────────────────────── */
-.complaint-page {
-  max-width: 600px;
-  margin: 110px auto 80px;
-  padding: 0 20px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-/* ── Header Card ─────────────────────────────── */
-.complaint-header {
-  background: var(--card-dark);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 30px 24px;
+body {
+  background-image:
+    linear-gradient(rgba(13, 15, 18, 0.9), rgba(13, 15, 18, 0.75)),
+    url("../img/userbg.png") !important;
+  background-color: var(--bg-dark) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  color: var(--text-light) !important;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
+/* Disable all transitions/animations */
+.complaint-layout-container,
+.complaint-layout-container * {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Layout Override */
+.complaint-layout-container {
+  max-width: 1100px !important;
+  margin: 40px auto 60px;
+  padding: 0 24px;
+}
+
+/* Full Width Hero Section */
+.complaint-hero-full-width {
+  width: 100%;
+  padding: 140px 24px 80px;
   text-align: center;
-  margin-bottom: 20px;
-  backdrop-filter: var(--blur);
 }
 
-.complaint-header-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 20px;
-  background: rgba(251,191,36,0.12);
-  color: #fbbf24;
-  font-size: 1.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
+.complaint-hero-content {
+  max-width: 800px;
+  margin: 40px auto 0;
 }
 
-.complaint-header h1 {
-  font-size: 1.6rem;
+.complaint-hero-title {
+  font-size: 3.1rem;
   font-weight: 700;
-  letter-spacing: -0.3px;
-  margin-bottom: 6px;
+  color: #ffffff;
+  margin-bottom: 0px;
+  letter-spacing: -1.5px;
+  line-height: 1.2;
 }
 
-.complaint-header p {
-  color: var(--text-secondary);
-  font-size: 0.88rem;
+/* Gradient Divider */
+.complaint-divider-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
-/* ── Form Card ───────────────────────────────── */
+.complaint-gradient-line {
+  height: 1.5px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(160, 196, 255, 0) 0%,
+    rgba(160, 196, 255, 0.4) 15%,
+    rgba(160, 196, 255, 0.8) 50%,
+    rgba(160, 196, 255, 0.4) 85%,
+    rgba(160, 196, 255, 0) 100%
+  );
+}
+
+/* Two Column Grid */
+.complaint-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 24px;
+  margin-bottom: 40px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .complaint-grid {
+    grid-template-columns: 1fr;
+  }
+  .complaint-hero-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* Information Card (Left Column) */
+.complaint-info-card {
+  background-color: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 28px;
+}
+
+.complaint-card-header {
+  margin-bottom: 16px;
+}
+
+.complaint-card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.complaint-card-divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.06);
+  margin-bottom: 20px;
+}
+
+.complaint-info-content p {
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.complaint-info-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.complaint-info-item i {
+  color: #a0c4ff;
+  font-size: 1.2rem;
+  margin-top: 2px;
+}
+
+.complaint-info-item strong {
+  display: block;
+  font-size: 0.9rem;
+  color: #ffffff;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.complaint-info-item span {
+  font-size: 0.85rem;
+  color: #a1a1aa;
+}
+
+/* Form Card (Right Column) */
 .complaint-form-card {
-  background: var(--card-dark);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 28px 24px;
-  backdrop-filter: var(--blur);
+  background-color: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 28px;
 }
 
 .form-group {
@@ -106,7 +174,7 @@ body { background-color: var(--bg-dark); color: var(--text-light); line-height: 
   display: block;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: #a1a1aa;
   margin-bottom: 8px;
   letter-spacing: 0.3px;
 }
@@ -115,98 +183,76 @@ body { background-color: var(--bg-dark); color: var(--text-light); line-height: 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 13px 16px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  color: var(--text-light);
+  padding: 14px 16px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  color: #ffffff;
   font-size: 0.95rem;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-weight: 500;
+  font-family: inherit;
   outline: none;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.light-mode .form-group select,
-.light-mode .form-group input,
-.light-mode .form-group textarea {
-  background: rgba(0,0,0,0.03);
 }
 
 .form-group select:focus,
 .form-group input:focus,
 .form-group textarea:focus {
-  border-color: rgba(255,255,255,0.3);
-  box-shadow: 0 0 0 3px rgba(255,255,255,0.05);
+  border-color: #a0c4ff;
+  box-shadow: 0 0 0 3px rgba(160, 196, 255, 0.15);
 }
 
 .form-group select option {
-  background: #1a1c20;
-  color: #fff;
-}
-.light-mode .form-group select option {
-  background: #f4f4f5;
-  color: #09090b;
+  background: #111318;
+  color: #ffffff;
 }
 
 .form-group textarea {
   resize: vertical;
-  min-height: 130px;
-  line-height: 1.6;
+  min-height: 140px;
 }
 
 .form-hint {
   font-size: 0.78rem;
-  color: var(--text-secondary);
+  color: #71717a;
   margin-top: 6px;
 }
 
-/* ── Submit Button ───────────────────────────── */
+/* Submit Button */
 .btn-submit {
   width: 100%;
   padding: 14px;
-  background: var(--text-light);
-  color: var(--bg-dark);
+  background-color: #a0c4ff;
+  color: #0d0f12;
   border: none;
-  border-radius: 14px;
+  border-radius: 10px;
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin-top: 4px;
 }
-.btn-submit:hover { opacity: 0.85; transform: translateY(-1px); }
-.btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
-/* ── Success State ───────────────────────────── */
+.btn-submit:hover {
+  background-color: #8cb8ff;
+}
+
+/* Success State */
 .complaint-success {
   display: none;
-  background: var(--card-dark);
-  border: 1px solid rgba(68,239,134,0.3);
-  border-radius: 20px;
+  background-color: #111318;
+  border: 1px solid rgba(160, 196, 255, 0.2);
+  border-radius: 14px;
   padding: 48px 24px;
   text-align: center;
-  backdrop-filter: var(--blur);
-  animation: fadeInUp 0.4s ease forwards;
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
 }
 
 .success-icon {
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: rgba(68,239,134,0.15);
-  color: #44ef86;
+  background: rgba(160, 196, 255, 0.1);
+  color: #a0c4ff;
   font-size: 2rem;
   display: flex;
   align-items: center;
@@ -218,10 +264,11 @@ body { background-color: var(--bg-dark); color: var(--text-light); line-height: 
   font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: 8px;
+  color: #ffffff;
 }
 
 .complaint-success p {
-  color: var(--text-secondary);
+  color: #a1a1aa;
   font-size: 0.9rem;
   margin-bottom: 24px;
 }
@@ -229,16 +276,14 @@ body { background-color: var(--bg-dark); color: var(--text-light); line-height: 
 .btn-back-home {
   display: inline-block;
   padding: 11px 28px;
-  background: var(--text-light);
-  color: var(--bg-dark);
-  border-radius: 14px;
+  background-color: #a0c4ff;
+  color: #0d0f12;
+  border-radius: 10px;
   font-weight: 700;
   text-decoration: none;
   font-size: 0.9rem;
-  transition: opacity 0.2s;
 }
-.btn-back-home:hover { opacity: 0.8; }
 
-@media (max-width: 480px) {
-  .complaint-page { margin-top: 90px; padding: 0 14px; }
+.btn-back-home:hover {
+  background-color: #8cb8ff;
 }

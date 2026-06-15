@@ -1,9 +1,8 @@
 <?php
-// Admin API: manage orders and complaints
 session_start();
 header('Content-Type: application/json');
 
-// Ensure admin is authenticated
+// Cek apakah admin sudah login
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] != true) {
     echo json_encode(["success" => false, "message" => "Unauthorized"]);
     exit;
@@ -16,12 +15,11 @@ if (empty($action) && isset($_POST['action'])) {
     $action = $_POST['action'];
 }
 
-// ─── ORDERS ─────────────────────────────────────────────────
 
-// Get all orders (with item count)
+// Ambil semua data pesanan
 if ($action == 'getAllOrders') {
     $sql = "SELECT o.*, 
-               (SELECT COUNT(*) FROM order_items oi WHERE oi.order_id = o.id) as item_count
+               (SELECT GROUP_CONCAT(CONCAT(oi.product_name, ' (x', oi.qty, ')') SEPARATOR ', ') FROM order_items oi WHERE oi.order_id = o.id) as items_summary
             FROM orders o
             ORDER BY o.created_at DESC";
     $result = $conn->query($sql);
@@ -32,7 +30,7 @@ if ($action == 'getAllOrders') {
     echo json_encode($orders);
 }
 
-// Get items in a specific order
+// Ambil item dari pesanan tertentu
 if ($action == 'getOrderItems') {
     $order_id = intval($_GET['id']);
     $result = $conn->query("SELECT * FROM order_items WHERE order_id = $order_id");
@@ -43,7 +41,7 @@ if ($action == 'getOrderItems') {
     echo json_encode($items);
 }
 
-// Update order status
+// Update status pesanan
 if ($action == 'updateOrderStatus') {
     $order_id = intval($_POST['order_id']);
     $status   = $conn->real_escape_string($_POST['status']);
@@ -59,9 +57,7 @@ if ($action == 'updateOrderStatus') {
     echo json_encode(["success" => true, "message" => "Order status updated"]);
 }
 
-// ─── COMPLAINTS ───────────────────────────────────────────────
-
-// Get all complaints
+// Ambil semua data komplain
 if ($action == 'getAllComplaints') {
     $sql = "SELECT * FROM complaints ORDER BY created_at DESC";
     $result = $conn->query($sql);
@@ -72,7 +68,7 @@ if ($action == 'getAllComplaints') {
     echo json_encode($complaints);
 }
 
-// Update complaint status
+// Update status komplain
 if ($action == 'updateComplaintStatus') {
     $complaint_id = intval($_POST['complaint_id']);
     $status       = $conn->real_escape_string($_POST['status']);

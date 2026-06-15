@@ -1,12 +1,12 @@
-// Load products from database on page load
+// Load data produk saat halaman dibuka
 $(document).ready(function () {
-  // Check if there is a search keyword in URL
+  // Cek jika ada keyword pencarian di URL
   var params = new URLSearchParams(window.location.search);
   var searchKeyword = params.get("search");
 
   if (searchKeyword) {
     searchProducts(searchKeyword);
-    // Also set the search bar value
+    // Set nilai input pencarian
     $("#searchInput").val(searchKeyword);
   } else {
     loadProducts();
@@ -15,54 +15,102 @@ $(document).ready(function () {
   updateCartCount();
 });
 
-// Load all products from database using AJAX
+// Ambil semua produk via AJAX
 function loadProducts() {
-  $.ajax({
-    url: "api/products.php?action=getAll",
-    type: "GET",
-    dataType: "json",
-    success: function (products) {
-      var grid = $("#productsGrid");
-      grid.empty();
+  var favIds = [];
 
-      products.forEach(function (product) {
-        var card = createProductCard(product);
-        grid.append(card);
-      });
-    },
-  });
+  var fetchProducts = function () {
+    $.ajax({
+      url: "api/products.php?action=getAll",
+      type: "GET",
+      dataType: "json",
+      success: function (products) {
+        var grid = $("#productsGrid");
+        grid.empty();
+
+        products.forEach(function (product) {
+          var isFavorited = favIds.indexOf(Number(product.id)) !== -1;
+          var card = createProductCard(product, isFavorited);
+          grid.append(card);
+        });
+      },
+    });
+  };
+
+  if (window.isLoggedIn) {
+    $.ajax({
+      url: "api/favorites.php?action=getFavorites",
+      type: "GET",
+      dataType: "json",
+      success: function (favorites) {
+        favIds = favorites.map(function (item) {
+          return Number(item.id);
+        });
+        fetchProducts();
+      },
+      error: function () {
+        fetchProducts();
+      },
+    });
+  } else {
+    fetchProducts();
+  }
 }
 
-// Search products from database
+// Cari produk dari database
 function searchProducts(keyword) {
-  $.ajax({
-    url:
-      "api/products.php?action=search&keyword=" + encodeURIComponent(keyword),
-    type: "GET",
-    dataType: "json",
-    success: function (products) {
-      var grid = $("#productsGrid");
-      grid.empty();
+  var favIds = [];
 
-      if (products.length == 0) {
-        grid.html(
-          '<p style="text-align:center; color:#aaa; grid-column: 1/-1; padding:40px;">No products found for "' +
-            keyword +
-            '"</p>',
-        );
-        return;
-      }
+  var fetchProducts = function () {
+    $.ajax({
+      url:
+        "api/products.php?action=search&keyword=" + encodeURIComponent(keyword),
+      type: "GET",
+      dataType: "json",
+      success: function (products) {
+        var grid = $("#productsGrid");
+        grid.empty();
 
-      products.forEach(function (product) {
-        var card = createProductCard(product);
-        grid.append(card);
-      });
-    },
-  });
+        if (products.length == 0) {
+          grid.html(
+            '<p style="text-align:center; color:#aaa; grid-column: 1/-1; padding:40px;">No products found for "' +
+              keyword +
+              '"</p>',
+          );
+          return;
+        }
+
+        products.forEach(function (product) {
+          var isFavorited = favIds.indexOf(Number(product.id)) !== -1;
+          var card = createProductCard(product, isFavorited);
+          grid.append(card);
+        });
+      },
+    });
+  };
+
+  if (window.isLoggedIn) {
+    $.ajax({
+      url: "api/favorites.php?action=getFavorites",
+      type: "GET",
+      dataType: "json",
+      success: function (favorites) {
+        favIds = favorites.map(function (item) {
+          return Number(item.id);
+        });
+        fetchProducts();
+      },
+      error: function () {
+        fetchProducts();
+      },
+    });
+  } else {
+    fetchProducts();
+  }
 }
 
-// Create a product card HTML
-function createProductCard(product) {
+// Generate HTML untuk card produk
+function createProductCard(product, isFavorited) {
   var badge = "";
   if (product.label == "PLAYSTATION") {
     badge = '<span class="badge playstation">PLAYSTATION</span>';
@@ -73,9 +121,7 @@ function createProductCard(product) {
   }
 
   var html =
-    '<a href="index.php?page=gameview&id=' +
-    product.id +
-    '" class="product-card-link">';
+    '<a href="product/' + product.id + '" class="product-card-link">';
   html += '<div class="product-card">';
   html += '<div class="product-image">';
   html +=
@@ -84,6 +130,8 @@ function createProductCard(product) {
     '" alt="' +
     product.name +
     '" class="product-img">';
+  html +=
+    '<div class="product-image-overlay"><span>Klik Untuk Lihat Selengkapnya ></span></div>';
   html += badge;
   html += "</div>";
   html += "<h3>" + product.name + "</h3>";
@@ -91,17 +139,73 @@ function createProductCard(product) {
     '<div class="product-price">Rp ' +
     parseInt(product.price).toLocaleString("id-ID") +
     "</div>";
+
+  html += '<div class="product-actions-row">';
   html +=
     '<button class="add-to-cart" onclick="addToCart(' +
     product.id +
     '); return false;">Add to Cart</button>';
+  html +=
+    '  <button class="fav-btn-action" onclick="toggleProductFavorite(event, ' +
+    product.id +
+    '); return false;">';
+  html +=
+    '    <i class="' +
+    (isFavorited ? "fa-solid fa-heart" : "fa-regular fa-heart") +
+    '" id="favIcon-' +
+    product.id +
+    '"' +
+    (isFavorited ? ' style="color: #E8AEFF;"' : "") +
+    "></i>";
+  html += "  </button>";
+  html += "</div>";
+
   html += "</div></a>";
 
   return html;
 }
 
-// Add to cart using AJAX
+// Toggle status favorit produk
+function toggleProductFavorite(event, productId) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  if (!window.isLoggedIn) {
+    notifAlert("Please log in first!");
+    return;
+  }
+
+  var icon = $("#favIcon-" + productId);
+
+  $.ajax({
+    url: "api/favorites.php",
+    type: "POST",
+    data: {
+      action: "toggleFavorite",
+      product_id: productId,
+    },
+    dataType: "json",
+    success: function (response) {
+      if (response.status == "added") {
+        icon.removeClass("fa-regular").addClass("fa-solid");
+        icon.css("color", "#E8AEFF");
+        notifAlert("Added to Favorites!");
+      } else {
+        icon.removeClass("fa-solid").addClass("fa-regular");
+        icon.css("color", "");
+        notifAlert("Removed from Favorites");
+      }
+    },
+  });
+}
+
+// Tambah ke keranjang via AJAX
 function addToCart(productId) {
+  if (!window.isLoggedIn) {
+    notifAlert("Please log in first!");
+    return;
+  }
+
   $.ajax({
     url: "api/cart.php",
     type: "POST",
@@ -112,10 +216,10 @@ function addToCart(productId) {
     dataType: "json",
     success: function (response) {
       if (response.success) {
-        // Update cart count in navbar
+        // Update jumlah keranjang di navbar
         $(".cart-count").text(response.cartCount);
         notifAlert("Product added to cart!");
-        // Automatically slide open the global Cart Sidebar Drawer
+        // Buka drawer keranjang otomatis
         if (typeof openCartSidebar === "function") {
           openCartSidebar();
         }
@@ -124,7 +228,7 @@ function addToCart(productId) {
   });
 }
 
-// Update cart count in navbar
+// Update jumlah keranjang di navbar
 function updateCartCount() {
   $.ajax({
     url: "api/cart.php?action=getCount",
@@ -136,7 +240,7 @@ function updateCartCount() {
   });
 }
 
-// Load cart items from database
+// Ambil data keranjang dari database
 function loadCart() {
   $.ajax({
     url: "api/cart.php?action=getCart",
@@ -192,7 +296,6 @@ function loadCart() {
         });
       }
 
-      // Update summary
       var shipping = 24000;
       var total = subtotal + shipping;
       $("#subtotal").text("Rp " + subtotal.toLocaleString("id-ID"));
@@ -202,7 +305,7 @@ function loadCart() {
   });
 }
 
-// Update cart quantity
+// Update jumlah item di keranjang
 function updateCartQty(cartId, newQty) {
   $.ajax({
     url: "api/cart.php",
@@ -220,7 +323,7 @@ function updateCartQty(cartId, newQty) {
   });
 }
 
-// Remove from cart
+// Hapus dari keranjang
 function removeFromCart(cartId) {
   $.ajax({
     url: "api/cart.php",
@@ -237,7 +340,7 @@ function removeFromCart(cartId) {
   });
 }
 
-// Notification alert
+ alert
 function notifAlert(message) {
   var container = $("#notifContainer");
   var box = $('<div class="notifAlert">' + message + "</div>");
@@ -247,7 +350,7 @@ function notifAlert(message) {
     box.addClass("show");
   }, 20);
 
-  // Remove after 3 seconds
+  // Hapus notifikasi setelah 3 detik
   setTimeout(function () {
     box.removeClass("show");
     setTimeout(function () {

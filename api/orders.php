@@ -1,5 +1,5 @@
 <?php
-// API for order operations (user-facing)
+// API pesanan untuk user
 session_start();
 header('Content-Type: application/json');
 include('../config/db_conn.php');
@@ -10,7 +10,7 @@ if (empty($action) && isset($_POST['action'])) {
     $action = $_POST['action'];
 }
 
-// Get all orders for this session, newest first
+// Ambil semua pesanan user, urut dari yang terbaru
 if ($action == 'getOrders') {
     $filter = isset($_GET['status']) ? $conn->real_escape_string($_GET['status']) : '';
 
@@ -28,11 +28,11 @@ if ($action == 'getOrders') {
     echo json_encode($orders);
 }
 
-// Get items inside a specific order
+// Ambil item dari pesanan tertentu
 if ($action == 'getOrderDetail') {
     $order_id = intval($_GET['id']);
 
-    // Verify this order belongs to this session
+    // Pastikan pesanan ini milik user yang bersangkutan
     $check = $conn->query("SELECT id FROM orders WHERE id = $order_id AND session_id = '$session_id'");
     if ($check->num_rows == 0) {
         echo json_encode([]);
@@ -48,7 +48,7 @@ if ($action == 'getOrderDetail') {
     echo json_encode($items);
 }
 
-// Get order status counts for the user profile page
+// Ambil jumlah status pesanan untuk halaman profil
 if ($action == 'getOrderCounts') {
     $statuses = ['pending', 'processing', 'shipped', 'delivered'];
     $counts = [];
