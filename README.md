@@ -1,16 +1,8 @@
-# 🎮 GamInc - E-Commerce Game Store
+# GamInc - E-Commerce Game Store
 
 GamInc is a premium game store web application. It features a fully responsive catalog, interactive shopping cart, favorites management, customer complaints section, checkout workflow, and a robust admin dashboard for store managers.
 
 ---
-
-## 🛠️ Tech Stack & Key Features
-
-### Tech Stack
-* **Backend:** PHP (Native Procedural routing, Session-based auth)
-* **Frontend:** HTML5, Vanilla CSS (Premium dark mode aesthetic, glassmorphism, fluid animations), JavaScript (ES6)
-* **Database:** MySQL / MariaDB
-* **Libraries:** jQuery 3.7.1 (AJAX-powered interactions), FontAwesome (Icons)
 
 ### Public Features (Customer Interface)
 1. **Catalog & Search:** Browse the premium game collection based on category/platform, complete with real-time search functionality.
@@ -28,7 +20,7 @@ GamInc is a premium game store web application. It features a fully responsive c
 
 ---
 
-## 🔐 Testing Credentials
+## Testing Credentials
 
 ### 1. Public Account (Customer)
 * **URL:** `http://localhost/412024022_BRANDON_JEREMIAH/auth`
@@ -42,7 +34,7 @@ GamInc is a premium game store web application. It features a fully responsive c
 
 ---
 
-## 🚀 Local Installation Guide
+## Local Installation Guide
 
 ### Prerequisites
 1. Local server environment like **Laragon** (highly recommended) or **XAMPP**.
@@ -76,7 +68,7 @@ GamInc is a premium game store web application. It features a fully responsive c
 
 ---
 
-## 📂 Main Directory Structure
+## Main Directory Structure
 
 ```text
 ├── administrator/          # Administrator-specific files (Dashboard, Login Pages & Admin APIs)
