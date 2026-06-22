@@ -1,75 +1,67 @@
 # 🎮 GamInc - E-Commerce Game Store
 
-GamInc is a premium game store web application designed and built for the **Pemrograman Web II (Web Programming 2)** course. It features a fully responsive catalog, interactive shopping cart, favorites management, customer complaints section, checkout workflow, and a robust admin dashboard for store managers.
+GamInc is a premium game store web application. It features a fully responsive catalog, interactive shopping cart, favorites management, customer complaints section, checkout workflow, and a robust admin dashboard for store managers.
 
 ---
 
-## 👤 Identitas Pengembang
-* **Nama Mahasiswa:** Brandon Jeremiah Sutedja
-* **NIM:** 412024022
-* **Dosen Pengampu:** Benisius Anu, M.Cs.
-* **Program Studi:** Informatika / Sistem Informasi
-
----
-
-## 🛠️ Tech Stack & Fitur Utama
+## 🛠️ Tech Stack & Key Features
 
 ### Tech Stack
-* **Backend:** PHP (Native OOP/Procedural routing, Session-based auth)
+* **Backend:** PHP (Native Procedural routing, Session-based auth)
 * **Frontend:** HTML5, Vanilla CSS (Premium dark mode aesthetic, glassmorphism, fluid animations), JavaScript (ES6)
 * **Database:** MySQL / MariaDB
-* **Libraries:** jQuery 3.7.1 (AJAX powered interactions), FontAwesome (Icons)
+* **Libraries:** jQuery 3.7.1 (AJAX-powered interactions), FontAwesome (Icons)
 
-### Fitur Pengguna (Public Features)
-1. **Catalog & Search:** Telusuri koleksi game premium berdasarkan kategori/platform, lengkap dengan fitur pencarian real-time.
-2. **Interactive Shopping Cart:** Menambah, mengurangi, dan menghapus item langsung melalui sidebar drawer cart tanpa reload halaman.
-3. **Favorites (Wishlist):** Simpan game favorit Anda untuk dibeli di kemudian hari.
-4. **Checkout System:** Alur formulir pembelian yang aman dengan rekap order instan.
-5. **Interactive FAQ:** Halaman tanya-jawab akordeon interaktif untuk bantuan cepat.
-6. **Complaints Form:** Ajukan keluhan atau kendala transaksi langsung ke tim administrasi.
+### Public Features (Customer Interface)
+1. **Catalog & Search:** Browse the premium game collection based on category/platform, complete with real-time search functionality.
+2. **Interactive Shopping Cart:** Add, decrease, and remove items directly via a sidebar drawer cart without page reloads.
+3. **Favorites (Wishlist):** Save your favorite games to purchase later.
+4. **Checkout System:** A secure purchase flow with instant order summary.
+5. **Interactive FAQ:** An interactive accordion Q&A page for quick assistance.
+6. **Complaints Form:** Submit complaints or transaction issues directly to the administration team.
 
-### Fitur Administrator (Admin Panel)
-1. **Admin Dashboard:** Rekap data produk, pesanan masuk (*orders*), dan keluhan pelanggan.
-2. **Product CRUD:** Tambah, edit, dan hapus data produk game secara langsung dengan upload gambar produk.
-3. **Order Status Management:** Perbarui status transaksi pelanggan (*pending, processing, shipped, delivered*).
-4. **Complaint Resolution:** Tinjau pesan keluhan dari pelanggan dan tandai keluhan sebagai diselesaikan (*resolved*).
+### Administrator Features (Admin Panel)
+1. **Admin Dashboard:** Summary of product data, incoming orders, and customer complaints.
+2. **Product CRUD:** Add, edit, and delete game product data directly with product image uploads.
+3. **Order Status Management:** Update customer transaction status (*pending, processing, shipped, delivered*).
+4. **Complaint Resolution:** Review customer complaint messages and mark them as resolved.
 
 ---
 
-## 🔐 Akun & Kredensial Pengujian
+## 🔐 Testing Credentials
 
-### 1. Akun Public (Customer)
+### 1. Public Account (Customer)
 * **URL:** `http://localhost/412024022_BRANDON_JEREMIAH/auth`
 * **Username:** `brandon`
 * **Password:** `1234`
 
-### 2. Akun Administrator
+### 2. Administrator Account
 * **URL:** `http://localhost/412024022_BRANDON_JEREMIAH/admin`
 * **Username:** `admin`
 * **Password:** `admin123`
 
 ---
 
-## 🚀 Panduan Instalasi Lokal
+## 🚀 Local Installation Guide
 
-### Prasyarat
-1. Server lokal seperti **Laragon** (sangat direkomendasikan) atau **XAMPP**.
-2. PHP versi 7.4 ke atas.
+### Prerequisites
+1. Local server environment like **Laragon** (highly recommended) or **XAMPP**.
+2. PHP version 7.4 or higher.
 3. MySQL Database.
 
-### Langkah-langkah Setup
-1. **Clone/Salin Project:**
-   Tempatkan folder proyek `412024022_BRANDON_JEREMIAH` ke dalam direktori root server lokal Anda:
+### Setup Steps
+1. **Clone/Copy Project:**
+   Place the project folder `412024022_BRANDON_JEREMIAH` in your local server root directory:
    * **Laragon:** `C:\laragon\www\`
    * **XAMPP:** `C:\xampp\htdocs\`
 
 2. **Import Database:**
-   * Buka **phpMyAdmin** atau client database favorit Anda (HeidiSQL/DBeaver).
-   * Buat database baru dengan nama `20222_wp2_412024022`.
-   * Import file SQL yang berada di dalam proyek: `config/20222_wp2_412024022.sql`.
+   * Open **phpMyAdmin** or your preferred database client (HeidiSQL/DBeaver).
+   * Create a new database named `20222_wp2_412024022`.
+   * Import the SQL file located inside the project: `config/20222_wp2_412024022.sql`.
 
-3. **Konfigurasi Koneksi:**
-   Buka file `config/db_conn.php` dan pastikan kredensial server lokal Anda sesuai:
+3. **Connection Configuration:**
+   Open the `config/db_conn.php` file and make sure it matches your local server credentials:
    ```php
    $servername = "127.0.0.1";
    $username = "root";
@@ -77,28 +69,28 @@ GamInc is a premium game store web application designed and built for the **Pemr
    $dbname = "20222_wp2_412024022";
    ```
 
-4. **Jalankan Aplikasi:**
-   Buka browser Anda dan akses:
+4. **Run Application:**
+   Open your browser and access:
    * Public Web: `http://localhost/412024022_BRANDON_JEREMIAH/`
    * Admin Web: `http://localhost/412024022_BRANDON_JEREMIAH/admin`
 
 ---
 
-## 📂 Struktur Direktori Utama
+## 📂 Main Directory Structure
 
 ```text
-├── administrator/          # File khusus administrator (Halaman Dashboard, Login, & API Admin)
-│   ├── api/                # API handler untuk admin (auth, orders, products)
-│   └── pages/              # Tampilan halaman admin (dashboard, login)
-├── api/                    # API handler untuk pengguna publik (auth, cart, orders, dll)
-├── assets/                 # Aset aplikasi
-│   ├── css/                # Styling CSS (Navbar, Footer, Modul Halaman)
-│   ├── img/                # Gambar produk & dekorasi UI
-│   └── js/                 # Logika JavaScript & jQuery AJAX
-├── components/             # Komponen UI global (Navbar, Footer, Head)
-├── config/                 # File konfigurasi database & file migrasi SQL
-├── pages/                  # Tampilan halaman publik (Home, Auth, Cart, Product, FAQ, dll)
-├── .htaccess               # Konfigurasi routing & URL Rewriting
-├── index.php               # Halaman utama & handler router aplikasi
-└── README.md               # Dokumentasi proyek
+├── administrator/          # Administrator-specific files (Dashboard, Login Pages & Admin APIs)
+│   ├── api/                # API handlers for admin (auth, orders, products)
+│   └── pages/              # Admin page templates (dashboard, login)
+├── api/                    # API handlers for public users (auth, cart, orders, etc.)
+├── assets/                 # Application assets
+│   ├── css/                # CSS Stylesheets (Navbar, Footer, Page modules)
+│   ├── img/                # Product images & UI graphics
+│   └── js/                 # JavaScript & jQuery AJAX logic
+├── components/             # Global UI components (Navbar, Footer, Head)
+├── config/                 # Database configuration & SQL migration scripts
+├── pages/                  # Public page views (Home, Auth, Cart, Product, FAQ, etc.)
+├── .htaccess               # URL rewriting & routing configuration
+├── index.php               # Front controller & application router
+└── README.md               # Project documentation
 ```
