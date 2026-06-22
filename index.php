@@ -45,7 +45,7 @@
                         break;
 
                     case "auth": 
-                        $content = "pages/auth.php"; 
+                        $content = "pages/public-login.php"; 
                         break;
 
                     case "product": 
