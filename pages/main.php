@@ -26,9 +26,9 @@
         <div class="hero-content">
           <span class="hero-badge">Toko Game Terlengkap</span>
           <h1 class="hero-title">Mainkan Game<br>Impianmu, hanya di<br>
-          Gam<span style="color: #A0C4FF;">i</span><span style="color: #BDB2FF;">n</span><span style="color: #E8AEFF;">c</span><span style="color: #FFC6FF;">!</span></h1>
+          <em style="font-style: italic;">Tr<span style="color: #A0C4FF;">i</span><span style="color: #BDB2FF;">g</span><span style="color: #E8AEFF;">g</span></em><span style="color: #FFC6FF;"> !</span></h1>
           <p class="hero-desc">
-            Gaminc. hadir sebagai surga belanja para gamer. Dapatkan rilisan game PlayStation dan Nintendo Switch 2 paling hits, 100% produk original, serta pengiriman gratis ongkir ke seluruh Indonesia.
+            <em style="font-style: italic;">Trigg</em> hadir sebagai surga belanja para gamer. Dapatkan rilisan game PlayStation dan Nintendo Switch 2 paling hits, 100% produk original, serta pengiriman gratis ongkir ke seluruh Indonesia.
           </p>
           <div class="hero-buttons">
             <a href="product" class="btn-hero-primary">Eksplor Game</a>
@@ -173,7 +173,7 @@
         <div class="testimonial-header">
           <span class="testimonial-badge">Apa Kata Mereka ?</span>
           <h2 class="testimonial-section-title">Gamer Puas, Kami Senang!</h2>
-          <p class="testimonial-section-desc">Ribuan gamer di Indonesia telah mempercayai GamInc. sebagai destinasi belanja game original terbaik mereka.</p>
+          <p class="testimonial-section-desc">Ribuan gamer di Indonesia telah mempercayai <em style="font-style: italic;">Trigg</em> sebagai destinasi belanja game original terbaik mereka.</p>
         </div>
 
         <!-- 3-Column Grid Layout -->
@@ -269,7 +269,7 @@
               <i class="fas fa-envelope"></i>
                 <div>
                   <h4>Email</h4>
-                  <p>support@gaminc.com</p>
+                  <p>support@trigg.com</p>
                 </div>
             </div>
 
@@ -285,7 +285,7 @@
               <i class="fas fa-map-marker-alt"></i>
                 <div>
                   <h4>Address</h4>
-                  <p>Jl. Gaminc Center No. 123, Jakarta Barat, Indonesia</p>
+                  <p>Jl. Trigg Center No. 123, Jakarta Barat, Indonesia</p>
                 </div>
             </div>
             

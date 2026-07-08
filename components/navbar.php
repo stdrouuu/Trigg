@@ -9,8 +9,7 @@ $userName = $isLoggedIn ? $_SESSION['user_name'] : '';
         <!-- Group Left: Logo & Menu Links -->
         <div class="nav-group-left" style="display: flex; align-items: center; gap: 36px;">
           <div class="nav-logo" onclick="window.location.href='main'" style="cursor: pointer;">
-            <i class="fa-solid fa-shapes"></i>
-           <strong>Gam<span style="font-weight: 900; color: #A0C4FF;">i</span><span style="font-weight: 900; color: #BDB2FF;">n</span><span style="font-weight: 900; color: #E8AEFF;">c</span></strong>
+           <strong style="font-style: italic;">Tr<span style="font-weight: 900; color: #A0C4FF;">i</span><span style="font-weight: 900; color: #BDB2FF;">g</span><span style="font-weight: 900; color: #E8AEFF;">g</span></strong>
 
           </div>
     

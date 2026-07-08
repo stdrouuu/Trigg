@@ -20,7 +20,7 @@
 
         <!-- Bio -->
         <p class="credits-bio">
-            <strong>GamInc.</strong> is my personal learning experience project.
+            <strong><em style="font-style: italic;">Trigg</em></strong> is my personal learning experience project.
             I personally designed and coded this entire e-commerce site from scratch,
             serving as the sole developer to apply and master new skills.
         </p>

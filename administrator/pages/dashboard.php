@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] != true
     exit;
 }
 ?>
-<script>document.title = "Admin Dashboard | GamInc.";</script>
+<script>document.title = "Admin Dashboard | Trigg";</script>
 <link href="assets/css/admin-dashboard.css" rel="stylesheet" />
 
 
@@ -17,7 +17,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] != true
         <aside class="admin-sidebar">
             <div class="sidebar-brand">
                 <i class="fa-solid fa-shapes"></i>
-                <span>Gam<span style="font-weight: 900; color: #A0C4FF;">i</span><span style="font-weight: 900; color: #BDB2FF;">n</span><span style="font-weight: 900; color: #E8AEFF;">c</span> <span class="sidebar-brand-sub">@admin</span></span>
+                <span><em style="font-style: italic;">Tr<span style="font-weight: 900; color: #A0C4FF;">i</span><span style="font-weight: 900; color: #BDB2FF;">g</span><span style="font-weight: 900; color: #E8AEFF;">g</span></em> <span class="sidebar-brand-sub">@admin</span></span>
             </div>
 
             <nav class="sidebar-nav">

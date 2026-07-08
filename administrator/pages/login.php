@@ -1,4 +1,4 @@
-<script>"Admin Login | GamInc.";</script>
+<script>"Admin Login | Trigg";</script>
 <link href="assets/css/admin-login.css" rel="stylesheet" />
 
 <div class="login-box">

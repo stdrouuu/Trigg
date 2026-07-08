@@ -33,7 +33,7 @@
                     <i class="fa-solid fa-envelope"></i>
                     <div>
                         <strong>Email Dukungan</strong>
-                        <span>> support@gaminc.com</span>
+                        <span>> support@trigg.com</span>
                     </div>
                 </div>
                 <div class="complaint-info-item">

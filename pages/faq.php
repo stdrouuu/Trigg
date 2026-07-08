@@ -33,20 +33,20 @@
             <div class="faq-items-list">
                 <div class="faq-item">
                     <div class="faq-question-trigger">
-                        <span>Bagaimana cara membeli game di GamInc?</span>
+                        <span>Bagaimana cara membeli game di Trigg?</span>
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
                     <div class="faq-question-answer">
-                        Anda dapat membeli game dengan memilih produk yang diinginkan, menambahkannya ke keranjang, lalu menyelesaikan pembayaran melalui metode pembayaran yang tersedia di GamInc.
+                        Anda dapat membeli game dengan memilih produk yang diinginkan, menambahkannya ke keranjang, lalu menyelesaikan pembayaran melalui metode pembayaran yang tersedia di Trigg.
                     </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question-trigger">
-                        <span>Apakah semua game di GamInc original?</span>
+                        <span>Apakah semua game di Trigg original?</span>
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
                     <div class="faq-question-answer">
-                        Ya, seluruh produk game yang dijual di GamInc merupakan produk original dengan lisensi resmi dari publisher maupun distributor terpercaya.
+                        Ya, seluruh produk game yang dijual di Trigg merupakan produk original dengan lisensi resmi dari publisher maupun distributor terpercaya.
                     </div>
                 </div>
                 <div class="faq-item">
@@ -55,7 +55,7 @@
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
                     <div class="faq-question-answer">
-                      Setelah pembayaran berhasil diverifikasi, pesanan Anda akan segera diproses. Anda dapat memantau status pesanan melalui menu "Pesanan Saya" pada akun GamInc Anda.
+                      Setelah pembayaran berhasil diverifikasi, pesanan Anda akan segera diproses. Anda dapat memantau status pesanan melalui menu "Pesanan Saya" pada akun Trigg Anda.
                     </div>
                 </div>
             </div>
@@ -70,11 +70,11 @@
             <div class="faq-items-list">
                 <div class="faq-item">
                     <div class="faq-question-trigger">
-                        <span>Metode pembayaran apa saja yang tersedia di GamInc?</span>
+                        <span>Metode pembayaran apa saja yang tersedia di Trigg?</span>
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
                     <div class="faq-question-answer">
-                        GamInc mendukung berbagai metode pembayaran seperti QRIS, transfer bank, dan e-wallet (GoPay & Ovo) untuk memudahkan transaksi Anda.
+                        Trigg mendukung berbagai metode pembayaran seperti QRIS, transfer bank, dan e-wallet (GoPay & Ovo) untuk memudahkan transaksi Anda.
                     </div>
                 </div>
                 <div class="faq-item">
@@ -83,16 +83,16 @@
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
                     <div class="faq-question-answer">
-                        Semua riwayat transaksi dapat dilihat pada menu "Pesanan Saya" pada akun GamInc Anda.
+                        Semua riwayat transaksi dapat dilihat pada menu "Pesanan Saya" pada akun Trigg Anda.
                     </div>
                 </div>
                <div class="faq-item">
                     <div class="faq-question-trigger">
-                        <span>Bagaimana cara menghubungkan e-wallet ke akun GamInc?</span>
+                        <span>Bagaimana cara menghubungkan e-wallet ke akun Trigg?</span>
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
                     <div class="faq-question-answer">
-                        Masuk ke akun GamInc Anda, lalu pilih opsi untuk mengkoneksikan e-wallet. Ikuti langkah verifikasi yang tersedia untuk mengkoneksikan akun e-wallet Anda.
+                        Masuk ke akun Trigg Anda, lalu pilih opsi untuk mengkoneksikan e-wallet. Ikuti langkah verifikasi yang tersedia untuk mengkoneksikan akun e-wallet Anda.
                     </div>
                 </div>
             </div>
@@ -125,11 +125,11 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-question-trigger">
-                        <span>Apakah GamInc menjual DLC dan item game?</span>
+                        <span>Apakah Trigg menjual DLC dan item game?</span>
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
                     <div class="faq-question-answer">
-                        Ya, GamInc juga menyediakan berbagai DLC, gift card, mata uang game, dan item digital lainnya untuk berbagai game populer.
+                        Ya, Trigg juga menyediakan berbagai DLC, gift card, mata uang game, dan item digital lainnya untuk berbagai game populer.
                     </div>
                 </div>
             </div>
@@ -144,20 +144,20 @@
             <div class="faq-items-list">
                 <div class="faq-item">
                     <div class="faq-question-trigger">
-                        <span>Bagaimana cara bekerja sama dengan GamInc?</span>
+                        <span>Bagaimana cara bekerja sama dengan Trigg?</span>
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
                     <div class="faq-question-answer">
-                        Anda dapat menghubungi tim GamInc melalui halaman kontak untuk mengajukan kerja sama sebagai partner, reseller, maupun content creator.
+                        Anda dapat menghubungi tim Trigg melalui halaman kontak untuk mengajukan kerja sama sebagai partner, reseller, maupun content creator.
                     </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question-trigger">
-                        <span>Apakah GamInc membuka program reseller?</span>
+                        <span>Apakah Trigg membuka program reseller?</span>
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
                     <div class="faq-question-answer">
-                        Ya, GamInc menyediakan program reseller untuk penjualan game digital dengan harga khusus dan keuntungan tambahan bagi mitra resmi.
+                        Ya, Trigg menyediakan program reseller untuk penjualan game digital dengan harga khusus dan keuntungan tambahan bagi mitra resmi.
                     </div>
                 </div>
                 <div class="faq-item">
@@ -166,7 +166,7 @@
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
                     <div class="faq-question-answer">
-                        Partner resmi GamInc berkesempatan mendapatkan promo eksklusif, harga khusus, serta akses lebih awal ke event dan produk terbaru.
+                        Partner resmi Trigg berkesempatan mendapatkan promo eksklusif, harga khusus, serta akses lebih awal ke event dan produk terbaru.
                     </div>
                 </div>
             </div>
@@ -194,12 +194,12 @@
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
                     <div class="faq-question-answer">
-                        Jika pesanan Anda belum diterima, silakan periksa status pengiriman pada menu "Pesanan Saya". Apabila barang belum kunjung sampai, hubungi tim customer support GamInc untuk bantuan lebih lanjut.
+                        Jika pesanan Anda belum diterima, silakan periksa status pengiriman pada menu "Pesanan Saya". Apabila barang belum kunjung sampai, hubungi tim customer support Trigg untuk bantuan lebih lanjut.
                     </div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question-trigger">
-                        <span>Bagaimana cara menghubungi customer support GamInc?</span>
+                        <span>Bagaimana cara menghubungi customer support Trigg?</span>
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
                     <div class="faq-question-answer">
@@ -213,7 +213,7 @@
         <div class="faq-contact-card">
             <div class="faq-contact-info">
                 <h3 class="faq-contact-title">Masih Punya Pertanyaan?</h3>
-                <p class="faq-contact-text">Tim GamInc siap membantu kebutuhan gaming Anda!</p>
+                <p class="faq-contact-text">Tim Trigg siap membantu kebutuhan gaming Anda!</p>
             </div>
             <a href="complaint" class="faq-contact-button">Hubungi kami</a>
         </div>
@@ -223,7 +223,7 @@
     <!-- No Results -->
     <div class="faq-no-results" id="faqNoResults">
         <h3>Hasil Pencarian Tidak Ditemukan</h3>
-        <p>Kami tidak menemukan pertanyaan yang sesuai dengan kata kunci Anda. Silakan coba kata kunci lain atau hubungi tim GamInc secara langsung.</p>
+        <p>Kami tidak menemukan pertanyaan yang sesuai dengan kata kunci Anda. Silakan coba kata kunci lain atau hubungi tim Trigg secara langsung.</p>
     </div>
 
 </div>

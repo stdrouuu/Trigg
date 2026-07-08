@@ -4,7 +4,7 @@
     <base href="<?php echo rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/'; ?>">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GamInc. | Digital Console Retail Platform</title>
+    <title>Trigg | Digital Console Retail Platform</title>
 
     <!-- poppins google font -->
      

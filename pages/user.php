@@ -22,7 +22,7 @@ if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true)
                 <div class="profile-avatar" id="userAvatar">B</div>
                 <div class="profile-info">
                     <div class="profile-name" id="userName">Brandon</div>
-                    <div class="profile-badge"><i class="fas fa-gamepad"></i> GamInc. Member</div>
+                    <div class="profile-badge"><i class="fas fa-gamepad"></i> <i style="font-style: italic;">Trigg</i> Member</div>
                 </div>
             </div>
 
@@ -82,7 +82,7 @@ if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true)
                 </a>
                 <a href="credits" class="menu-list-item">
                     <div class="menu-icon-wrap"><i class="fas fa-info-circle"></i></div>
-                    <span class="menu-title">About GamInc.</span>
+                    <span class="menu-title">About <i style="font-style: italic;">Trigg</i></span>
                     <i class="fas fa-chevron-right arrow-icon"></i>
                 </a>
                 <a href="#" class="menu-list-item logout-item" id="logoutBtn">

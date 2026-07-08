@@ -1,6 +1,6 @@
-# Gaminc - E-Commerce Game Store
+# Trigg - E-Commerce Game Store
 
-GamInc is a premium game store web application. It features a fully responsive catalog, interactive shopping cart, favorites management, customer complaints section, checkout workflow, and a robust admin dashboard for store managers.
+Trigg is a premium game store web application. It features a fully responsive catalog, interactive shopping cart, favorites management, customer complaints section, checkout workflow, and a robust admin dashboard for store managers.
 
 ![Screenshot 2026-06-22 094235.png](https://github.com/user-attachments/assets/35b47d40-25fb-49a8-b6bb-af114b669d58)
 

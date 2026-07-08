@@ -3,7 +3,7 @@
 
 <body>
   <div class="login-box">
-    <h2>Log in to GamInc.</h2>
+    <h2><span style="font-weight: 400">Log in to</span> <em style="font-style: italic;">Tr<span style="color: #A0C4FF;">i</span><span style="color: #BDB2FF;">g</span><span style="color: #E8AEFF;">g</span></em></h2>
         <p>Enter your account to continue !</p>
 
         <div class="error" id="errorMsg">Invalid username or password.</div>
@@ -12,7 +12,7 @@
             <button id="loginBtn">Log In</button>
             
             <a href="main" class="back-link">
-                <i class="fas fa-arrow-left"></i> Back to Website
+                Back to Website
             </a>
         </div>
 </body>
